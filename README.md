@@ -1,2 +1,2 @@
 # CellLayers
-Uncovering knowledge and structure in unsupervised single cell analysis
+Uncovering knowledge and structure in unsupervised single cell analysis.
