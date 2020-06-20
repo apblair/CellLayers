@@ -1,0 +1,45 @@
+Cell Layers is an interactive sankey network, powered by Plotly, for uncovering structure and knowledge in unsupervised single cell analysis. This README file will explain the contents in the CellLayers_v0.1 folder and how to start the environment for running the tutorial notebook.
+
+Files
+-----
+1) pbmc_exp.csv : cell by gene expression matrix processed via Seurat version 3.2.0
+2) pbmc_meta.csv : cell by meta data matrix processed via Seurat version 3.2.0
+3) tutorial.ipynb : an i-python notebook containing the Cell Layers PBMC tutorial
+4) PBMC_GNLY.html : a html file showing one PBMC example of the interactive Cell Layers application
+
+Creating the environment for your local machine
+-----------------------------------------------
+1) Install Docker and open terminal
+
+2) Pull the docker container
+$ docker pull apblair/computing-envs:ab-JupyterLab_seurat_v3.2.0_scanpy_v1.4.6
+
+3) Run the docker container
+$ docker run -p 8888:8888 -v /path/to/tutorial/folder:/home/jovyan/work ab-JupyterLab_seurat_v3.2.0_scanpy_v1.4.6 start.sh jupyter lab
+
+4) Open browser and type:localhost:8888
+
+Creating the environment for Wynton
+------------------------------------
+1) ssh to a Wynton dev node and build the singularity container
+$ singularity build ab-JupyterLab_seurat_v3.2.0_scanpy_v1.4.6.sif docker://apblair/computing-envs:ab-JupyterLab_seurat_v3.2.0_scanpy_v1.4.6 
+
+2) Open a screen session for running the singularity container
+$ screen -S CellLayers
+
+3) Run the singularity container
+$ singularity exec /path/to/ab-JupyterLab_seurat_v3.2.0_scanpy_v1.4.6.sif start.sh jupyter lab --port=9595
+
+4) Copy the token key
+
+5) Detach the screen and exit wynton
+
+6) ssh to the wynton login node
+$ ssh <your username>@log2.wynton.ucsf.edu -L 9595:localhost:9797
+
+7) ssh to the wynton dev node
+$ ssh qb3-dev2 -L 9797:localhost:9595
+
+8) Open browser and type: localhost:9595
+
+For more information on running interactive coding environments on Wynton, please refer to this document: https://docs.google.com/document/d/13MPXPdtGy4J80Wu9ZZp534fQEJQOc67Xox1zB379t6M/edit
