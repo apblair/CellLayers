@@ -28,10 +28,14 @@ exp_df = pd.read_csv()
 meta_df = pd.read_csv()
 ```
 
+### Seurat implementation
 ```R
+library(Seurat)
 ```
 
+### Scanpy implementation
 ```Python
+import 
 ```
 
 ## Documentation
