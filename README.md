@@ -1,6 +1,4 @@
-# CellLayers
-
-Cell Layers is an information visualization study strategy for uncovering structure and knowledge in unsupervised single cell analysis. 
+# Cell Layers: Uncovering clustering structure and knowledge in unsupervised single-cell transcriptomic analysis
 
 # Motivation
 
@@ -10,5 +8,12 @@ Unsupervised clustering of single-cell transcriptomics is a powerful method for 
 
 # Usage
 
+```bash
+pip install CellLayers
+```
+
+```bash
+docker pull CellLayers
+```
 
 # Documentation
