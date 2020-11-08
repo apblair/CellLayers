@@ -10,13 +10,13 @@ Cell Layers is an interactive Sankey tool for the quantitative investigation of 
 Cell Layers may be installed via pip, conda, or Docker.
 
 ```bash
-pip install CellLayers
+$ pip install CellLayers
 ```
 ```bash
-conda install CellLayers
+$ conda install CellLayers
 ```
 ```bash
-docker pull CellLayers
+$ docker pull CellLayers
 ```
 
 ## Usage
@@ -28,4 +28,13 @@ exp_df = pd.read_csv()
 meta_df = pd.read_csv()
 ```
 
+```R
+```
+
+```Python
+```
+
 ## Documentation
+Please consider citing Cell Layers if you used the application for your analysis.
+
+
