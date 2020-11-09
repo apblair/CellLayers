@@ -29,12 +29,12 @@ exp_df = pd.read_csv()
 meta_df = pd.read_csv()
 ```
 
-### Seurat implementation
+### Seurat Implementation
 ```R
 library(Seurat)
 ```
 
-### Scanpy implementation
+### Scanpy Implementation
 ```Python
 import scanpy as sc 
 ```
