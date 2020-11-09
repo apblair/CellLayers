@@ -1,11 +1,11 @@
 # Cell Layers: Uncovering clustering structure and knowledge in unsupervised single-cell transcriptomic analysis
+##### Andrew P. Blair, Robert K. Hu, Irfan S. Kathiriya, Katherine S. Pollard, Pawel F. Przytycki, Benoit G. Bruneau
 
 ## Motivation
 Unsupervised clustering of single-cell transcriptomics is a powerful method for identifying cell populations. Static visualization techniques for single-cell clustering only display results for a single resolution parameter. Analysts will often evaluate more than one resolution parameter, but then only report one.
 
 ## Results
-Cell Layers is an interactive Sankey tool for the quantitative investigation of gene expression, coexpression, biological processes, and cluster integrity across clustering resolutions. Cell Layers enhances the interpretability of single-cell clustering by linking molecular data and cluster evaluation metrics to provide novel insight into cell populations.
-
+We developed Cell Layers, an interactive Sankey tool for the quantitative investigation of gene expression, coexpression, biological processes, and cluster integrity across clustering resolutions. Cell Layers enhances the interpretability of single-cell clustering by linking molecular data and cluster evaluation metrics to provide novel insight into cell populations.
 
 ## Installation
 Cell Layers may be installed via pip, conda, or Docker.
@@ -36,7 +36,7 @@ library(Seurat)
 
 ### Scanpy implementation
 ```Python
-import 
+import scanpy as sc 
 ```
 
 ## Documentation
