@@ -25,8 +25,10 @@ $ docker pull CellLayers
 import CellLayers
 import pandas as pd
 
-exp_df = pd.read_csv()
-meta_df = pd.read_csv()
+pbmc_exp = pd.read_csv('Data/PBMC_exp.csv', index_col=[0])
+pbmc_meta = pd.read_csv('Data/PBMC_meta.csv', index_col=[0])
+pbmc_modularity = pd.read_csv('Data/cluster_metrics/pbmc_modularity.csv', index_col=[0])
+pbmc_sil = pd.read_csv('Data/cluster_metrics/pbmc_silhouette_scores.csv', index_col=[0])
 ```
 
 ### Seurat Implementation
