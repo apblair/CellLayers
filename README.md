@@ -1,6 +1,8 @@
 # Cell Layers: Uncovering clustering structure and knowledge in unsupervised single-cell transcriptomic analysis
 #### Andrew P. Blair, Robert K. Hu, Irfan S. Kathiriya, Katherine S. Pollard, Pawel F. Przytycki, Benoit G. Bruneau
 
+<src image="Examples/example.png">
+
 ## Motivation
 Unsupervised clustering of single-cell transcriptomics is a powerful method for identifying cell populations. Static visualization techniques for single-cell clustering only display results for a single resolution parameter. Analysts will often evaluate more than one resolution parameter, but then only report one.
 
@@ -26,6 +28,11 @@ $ docker pull CellLayers
 $ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work apblair/computing-envs:ab-JupyterLab_seurat_v3.2.0_scanpy_v1.5.0
 ```
 
+## Seurat Data Generation
+```R
+library(Seurat)
+```
+
 ## Usage
 ```python
 import CellLayers
@@ -47,15 +54,7 @@ sankey_dict = CellLayers(pbmc_exp,
                                                  'FCGR3A']])
 ```
 
-### Seurat Implementation
-```R
-library(Seurat)
-```
 
-### Scanpy Implementation
-```Python
-import scanpy as sc 
-```
 
 ## Documentation
 Please consider citing Cell Layers if you used the application for your analysis.
