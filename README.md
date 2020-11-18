@@ -25,12 +25,12 @@ $ docker pull CellLayers
 
 ## Running the Container
 
-To run the Cell Layers JupyterLab container please install Docker, open a terminal, and run the following command. The Dockerfile can be found in the 'ComputingEnvironment' folder.
+To run the Cell Layers JupyterLab container please install Docker, open a terminal, and run the following command. The [Dockerfile!](http://google.com) can be found in the 'ComputingEnvironment' folder.
 ```bash
 $ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work apblair/computing-envs:ab-JupyterLab_seurat_v3.2.0_scanpy_v1.5.0
 ```
 
-The Docker container was also converted to a Singularity container and may be run on HPCs with the following command:
+The Docker container was also converted to a Singularity container and may be run on HPCs with the following command.
 ```bash
 $ singularity exec ab-JupyterLab_seurat_v3.2.0_scanpy_v1.5.0.sif start.sh jupyter lab --port=9595
 ```
