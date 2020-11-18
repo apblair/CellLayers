@@ -1,6 +1,7 @@
 # Cell Layers: Uncovering clustering structure and knowledge in unsupervised single-cell transcriptomic analysis
 #### Andrew P. Blair, Robert K. Hu, Katherine S. Pollard, Pawel F. Przytycki*, Irfan S. Kathiriya*, Benoit G. Bruneau*
-*Contact*: andrew.blair@gladstone.ucsf.edu and irfan.kathiriya@ucsf.edu
+**Contact**: andrew.blair@gladstone.ucsf.edu and irfan.kathiriya@ucsf.edu
+
 <image src="Examples/example.png">
 
 ## Motivation
