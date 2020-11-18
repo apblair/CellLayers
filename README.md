@@ -1,5 +1,5 @@
 # Cell Layers: Uncovering clustering structure and knowledge in unsupervised single-cell transcriptomic analysis
-#### Andrew P. Blair, Robert K. Hu, Irfan S. Kathiriya, Katherine S. Pollard, Pawel F. Przytycki, Benoit G. Bruneau
+#### Andrew P. Blair, Robert K. Hu, Katherine S. Pollard, Pawel F. Przytycki*, Irfan S. Kathiriya*, Benoit G. Bruneau*
 
 <image src="Examples/example.png">
 
@@ -58,3 +58,14 @@ sankey_dict = CellLayers(pbmc_exp,
 
 ## Documentation
 Please consider citing Cell Layers if you used the application for your analysis.
+
+## Authors Contributions
+A.P.B. conceived and initiated the project. R.H assisted in analysis. B.G.B., P.F.P, and I.S.K. supervised A.P.B. I.S.K. provided datasets. K.S.P. advised. All authors commented on the manuscript.
+
+## Acknowledgments
+We thank the Cytoscape and scNetViz developers Alex Pico and Scooter Morris for their input on Plotly, Dan Carlin for his input on multi-resolution analysis, members of the CIRM Heart of Cells group, Gladstone Bioinformatics core, and Bruneau lab for discussions and comments. 
+
+## Funding
+California Institute for Regenerative Medicine (RB4-05901 to B.G.B)
+
+
