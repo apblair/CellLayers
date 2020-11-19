@@ -49,8 +49,8 @@ import pandas as pd
 
 pbmc_exp = pd.read_csv('Data/PBMC_exp.csv', index_col=[0]) # cell by gene expression matrix
 pbmc_meta = pd.read_csv('Data/PBMC_meta.csv', index_col=[0]) # cell by resolution matrix
-pbmc_modularity = pd.read_csv('Data/cluster_metrics/pbmc_modularity.csv', index_col=[0])
-pbmc_sil = pd.read_csv('Data/cluster_metrics/pbmc_silhouette_scores.csv', index_col=[0])
+pbmc_modularity = pd.read_csv('Data/pbmc_modularity.csv', index_col=[0])
+pbmc_sil = pd.read_csv('Data/pbmc_silhouette_scores.csv', index_col=[0])
 
 sankey_dict = CellLayers(pbmc_exp, 
                          pbmc_meta, 
