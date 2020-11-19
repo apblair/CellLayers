@@ -30,7 +30,7 @@ To run the Cell Layers JupyterLab container please install Docker, open a termin
 $ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work apblair/computing-envs:ab-JupyterLab_seurat_v3.2.0_scanpy_v1.5.0
 ```
 
-The Docker container was also converted to a Singularity container to run on HPCS and may be run with the following command.
+The Docker container was also converted to a Singularity container for HPCS. 
 ```bash
 $ singularity exec ab-JupyterLab_seurat_v3.2.0_scanpy_v1.5.0.sif start.sh jupyter lab --port=9595
 ```
