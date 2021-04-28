@@ -23,4 +23,4 @@ def make_config(exp_df, meta_df,
                                  edge_cutoff).compute()
 
 def make_sankey(sankey_dict, node_color='#F7ED32'):
-    return CellLayersConfig(sankey_dict, node_color=node_color)
+    return CellLayersConfig(sankey_dict, node_color=node_color).run()

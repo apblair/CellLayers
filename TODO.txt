@@ -1,0 +1,6 @@
+Tasks to complete for repository release:
+
+1. Create a CellLayers DockerHub and PIP repository for container
+2. Document CellLayersCompute and CellLayersConfig
+3. Update API nomenclature and add support for Scanpy, Seurat, and SingleCellExperiment
+4. Add PBMC and TBX5 tutorial
