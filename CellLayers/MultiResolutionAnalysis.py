@@ -118,10 +118,21 @@ class MultiResolutionAnalysis:
               for dag in self.meta_df[[self.sankey_dict['resolutions'][res], self.sankey_dict['resolutions'][res+1]]].values))
     
     def _avg_expression(self, cell_ids):
+        """
+        Compute the average expression of a gene for a subset of cell ids
+        
+        Parameters
+        ----------
+        cell_ids : list
+            List of strings to be spliced from expression dataframe
+        """
         for gene in self.sankey_dict['genes']:
             self.sankey_dict['exp_dict'][gene].append(self.exp_df.loc[cell_ids][gene].mean())
     
     def _create_expression_hex_color(self):
+        """
+        Create a hex code color range for a gene's expression in the sankey network streams
+        """
         for k,v in self.sankey_dict['exp_dict'].items():
             norm = matplotlib.colors.Normalize(vmin=min(v), vmax=max(v), clip=True)
             mapper = cm.ScalarMappable(norm=norm, cmap=cm.Purples)
@@ -131,12 +142,16 @@ class MultiResolutionAnalysis:
             self._create_expression_colorbar(k,v, hex_list)
     
     def _create_expression_colorbar(self, k,v, hex_list):
+        """
+        """
             color_bar_df = pd.DataFrame(self.sankey_dict['exp_dict'][k])
             color_bar_df['hex'] = hex_list
             color_bar_df = color_bar_df.sort_values(0)
             self.sankey_dict['exp_colorbar'][k] = dict(colorscale=color_bar_df['hex'].tolist(),showscale=True, cmin=min(v),cmax=max(v))
             
     def _tri_coexpression(self, cell_ids):
+        """
+        """
         for genes in self.sankey_dict['tri_coexp_genes']:
             total_sum = sum(self.exp_df.loc[cell_ids][genes].sum().tolist())
             if total_sum > 0:
@@ -156,6 +171,8 @@ class MultiResolutionAnalysis:
         self._create_expression_hex_color()
     
     def _create_node_data(self):
+        """
+        """
         node_df = pd.DataFrame(self.sankey_dict['node_labels'], columns=['node_labels'])
         node_df['res'] = [x.split('_')[0] for x in node_df['node_labels'].tolist()]
         node_df['modularity'] = [round(self.sankey_dict['modularity'][x],2) for x in node_df['res']]
@@ -166,6 +183,8 @@ class MultiResolutionAnalysis:
         self._color_silhouette()
         
     def _normalize_silhouette(self):
+        """
+        """
         node_list = []
         for items in self.sankey_dict['resolutions']:
             node_temp = self.sankey_dict['node_data'][self.sankey_dict['node_data']['res'] == items].copy()
@@ -176,6 +195,8 @@ class MultiResolutionAnalysis:
         self.sankey_dict['node_data']['silhoutte_norm_by_res'] = norm_sil_df['silhoutte_norm_by_res']
     
     def _color_silhouette(self):
+        """
+        """
         sil_list = [x/10.0 for x in list(range(-10,11,1))]
         norm = matplotlib.colors.Normalize(vmin=min(sil_list), vmax=max(sil_list), clip=True) # renornmalize per module
         mapper = cm.ScalarMappable(norm=norm, cmap=cm.RdYlBu_r)
@@ -185,6 +206,8 @@ class MultiResolutionAnalysis:
         self.sankey_dict['silhouette_mapper'] = mapper
     
     def compute(self):
+        """
+        """
         self._compute_genomic_data()
         self._create_node_data()
         return self.sankey_dict
