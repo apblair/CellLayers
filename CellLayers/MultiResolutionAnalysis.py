@@ -16,7 +16,7 @@ import chart_studio.plotly as py
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-class CellLayersCompute:
+class MultiResolutionAnalysis:
     def __init__(self, 
                  exp_df, meta_df, 
                  modularity,
@@ -168,7 +168,7 @@ class CellLayersCompute:
     def _normalize_silhouette(self):
         node_list = []
         for items in self.sankey_dict['resolutions']:
-            node_temp = self.sankey_dict['node_data'][self.sankey_dict['node_data']['res'] == items].copy()
+            node_temp = self.sankey_dict['node_data'][self.sankey_dict['node_data']['res'] == items]
             node_temp['silhoutte_norm_by_res'] = [abs(float(i)/max(node_temp['silhoutte_score'].tolist())) 
                                                   for i in node_temp['silhoutte_score'].tolist()]
             node_list.append(node_temp)

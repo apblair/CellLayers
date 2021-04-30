@@ -1,22 +1,6 @@
-import collections
-import numpy as np
-import pandas as pd
-import scipy.io as sci
-from itertools import islice
+from .MultiResolutionAnalysis import *
 
-import seaborn as sns
-
-import matplotlib.colors
-import matplotlib.cm as cm
-import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
-
-import plotly
-import chart_studio.plotly as py
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
-class CellLayersConfig(object):
+class BuildSankeyNetwork(object):
     
     def __init__(self, sankey_dict, node_color='#F7ED32'):
         self.sankey_dict = sankey_dict

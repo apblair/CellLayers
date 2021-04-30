@@ -16,7 +16,7 @@ import chart_studio.plotly as py
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-class CellLayersConfig(object):
+class MultiResolutionAnalysis(object):
     
     def __init__(self, sankey_dict, node_color='#F7ED32'):
         self.sankey_dict = sankey_dict
