@@ -22,11 +22,6 @@ $ docker pull bruneaulab/cell-layers:0.1
 
 ## Running the Container
 
-The relevant files may be found in the 'Env' folder.
-```bash
-$ docker build
-```
-
 To run the Cell Layers JupyterLab container please install Docker, open a terminal, and run the following command. 
 ```bash
 $ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work docker push bruneaulab/cell-layers:0.1
@@ -34,9 +29,10 @@ $ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan
 
 The Docker container was also converted to a Singularity container. 
 ```bash
-$
+$ singularity build cell-layers.sif docker://bruneaulab/cell-layers:0.1
 $ singularity exec cell-layers.sif start.sh jupyter lab --port=9595
 ```
+
 
 ## Usage
 ```python
