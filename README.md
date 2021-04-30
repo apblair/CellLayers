@@ -2,8 +2,6 @@
 #### Andrew P. Blair, Robert K. Hu, Katherine S. Pollard, Pawel F. Przytycki*, Irfan S. Kathiriya*, Benoit G. Bruneau*
 **Contact**: andrew.blair@gladstone.ucsf.edu and irfan.kathiriya@ucsf.edu
 
-<image src="Images/example.png">
-
 ## Motivation
 Unsupervised clustering of single-cell transcriptomics is a powerful method for identifying cell populations. Static visualization techniques for single-cell clustering only display results for a single resolution parameter. Analysts will often evaluate more than one resolution parameter, but then only report one.
 
@@ -20,7 +18,7 @@ $ pip install CellLayers
 $ conda install CellLayers
 ```
 ```bash
-$ docker pull CellLayers
+$ docker pull bruneaulab/cell-layers:0.1
 ```
 
 ## Running the Container
@@ -32,18 +30,13 @@ $ docker build
 
 To run the Cell Layers JupyterLab container please install Docker, open a terminal, and run the following command. 
 ```bash
-$ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work apblair/computing-envs:ab-JupyterLab_seurat_v3.2.0_scanpy_v1.5.0
+$ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work docker push bruneaulab/cell-layers:0.1
 ```
 
 The Docker container was also converted to a Singularity container. 
 ```bash
-$ singularity exec ab-JupyterLab_seurat_v3.2.0_scanpy_v1.5.0.sif start.sh jupyter lab --port=9595
-```
-
-
-## Seurat Data Generation
-```R
-library(Seurat)
+$
+$ singularity exec cell-layers.sif start.sh jupyter lab --port=9595
 ```
 
 ## Usage
@@ -56,17 +49,10 @@ pbmc_meta = pd.read_csv('Data/PBMC_meta.csv', index_col=[0]) # cell by resolutio
 pbmc_modularity = pd.read_csv('Data/pbmc_modularity.csv', index_col=[0])
 pbmc_sil = pd.read_csv('Data/pbmc_silhouette_scores.csv', index_col=[0])
 
-sankey_dict = CellLayers(pbmc_exp, 
-                         pbmc_meta, 
-                         modularity=pbmc_modularity,
-                         silhouette=pbmc_sil,
-                         genes=['MS4A1', 'GNLY',
-                                'CD3E', 'FCER1A'],
-                         tri_coexpressed_genes=[['MS4A1',
-                                                 'FCER1A', 
-                                                 'FCGR3A']])
+sankey = CellLayers.run(exp_df, meta_df, modularity=mod_df, silhouette=sil_df, genes=['CD3E'])
+sankey.show()
 ```
-
+<image src="Images/example.png">
 
 
 ## Documentation
