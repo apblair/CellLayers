@@ -21,7 +21,7 @@ $ docker pull bruneaulab/cell-layers:0.1
 $ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work bruneaulab/cell-layers:0.1
 ```
 
-For HPC clusters that support Linux containers, the Docker container may be pulled and built as a Singularity container.
+For HPC clusters that support Linux containers, the Docker container may be pulled and built as a Singularity container. After building the Singularity container, an interactive session may be build
 ```bash
 $ singularity build cell-layers.sif docker://bruneaulab/cell-layers:0.1
 $ singularity exec cell-layers.sif start.sh jupyter lab --port=9595
