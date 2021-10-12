@@ -8,9 +8,7 @@ Cell Layers may be installed via pip, conda, or Docker.
 ```bash
 $ pip install CellLayers
 ```
-```bash
-$ conda install CellLayers
-```
+
 ```bash
 $ docker pull bruneaulab/cell-layers:0.1
 ```
