@@ -6,7 +6,9 @@ Cell Layers is an interactive Sankey tool for the quantitative investigation of 
 Cell Layers may be installed via pip, conda, or Docker.
 
 ```bash
-$ pip install CellLayers
+$ git clone git@github.com:apblair/CellLayers.git
+$ cd CellLayers
+$ pip install .
 ```
 
 ```bash
