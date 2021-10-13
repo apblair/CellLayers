@@ -144,10 +144,10 @@ class MultiResolutionAnalysis:
     def _create_expression_colorbar(self, k,v, hex_list):
         """
         """
-            color_bar_df = pd.DataFrame(self.sankey_dict['exp_dict'][k])
-            color_bar_df['hex'] = hex_list
-            color_bar_df = color_bar_df.sort_values(0)
-            self.sankey_dict['exp_colorbar'][k] = dict(colorscale=color_bar_df['hex'].tolist(),showscale=True, cmin=min(v),cmax=max(v))
+        color_bar_df = pd.DataFrame(self.sankey_dict['exp_dict'][k])
+        color_bar_df['hex'] = hex_list
+        color_bar_df = color_bar_df.sort_values(0)
+        self.sankey_dict['exp_colorbar'][k] = dict(colorscale=color_bar_df['hex'].tolist(),showscale=True, cmin=min(v),cmax=max(v))
             
     def _tri_coexpression(self, cell_ids):
         """
