@@ -42,7 +42,7 @@ sankey.show()
 
 
 ## Documentation
-Please consider citing Cell Layers if you used the application for your analysis.
+Please consider citing Cell Layers if you used the application or code snippets for your analysis.
 
 ## Authors Contributions
 A.P.B. conceived and initiated the project. R.H assisted in analysis. B.G.B., P.F.P, and I.S.K. supervised A.P.B. I.S.K. provided datasets. K.S.P. advised. All authors commented on the manuscript.
