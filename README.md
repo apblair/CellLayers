@@ -28,6 +28,16 @@ $ singularity exec cell-layers.sif start.sh jupyter lab --port=9595
 ```
 
 ## Usage
+
+Please unzip the tutorial's expression data.
+
+```bash
+$ cd CellLayers/Data
+$ unzip PBMC_exp.csv.zip 
+```
+
+Next, open CellLayers/Notebooks/PBCM_Tutorial.ipynb in a Jupyter environment and run the following cell:
+
 ```python
 import CellLayers
 import pandas as pd
