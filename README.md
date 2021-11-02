@@ -56,9 +56,7 @@ sankey.show()
 ## Documentation
 Please consider citing Cell Layers if you used the application or code snippets for your analysis.
     
-**Cell Layers: Uncovering clustering structure and knowledge in unsupervised single-cell transcriptomic analysis**
-    
-Andrew P. Blair, Robert K. Hu, Elie N. Farah, Neil C. Chi, Katherine S. Pollard, Pawel F. Przytycki, Irfan S. Kathiriya, Benoit G. Bruneau
+**Cell Layers: Uncovering clustering structure and knowledge in unsupervised single-cell transcriptomic analysis** Andrew P. Blair, Robert K. Hu, Elie N. Farah, Neil C. Chi, Katherine S. Pollard, Pawel F. Przytycki, Irfan S. Kathiriya, Benoit G. Bruneau
 bioRxiv 2020.11.29.400614; doi: https://doi.org/10.1101/2020.11.29.400614
     
     
