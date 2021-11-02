@@ -2,7 +2,7 @@
 Notebooks/.ipynb_checkpoints/
 Data/.ipynb_checkpoints/
 CellLayers/.ipynb_checkpoints/
-Data/PBMC_exp.csv
+Data/PBMC/PBMC_exp.csv
 Data/__MACOSX/*
 Data/TBX5/TBX5_exp_*.mtx
 .DS_Store
