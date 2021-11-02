@@ -36,6 +36,8 @@ $ cd CellLayers/Data
 $ unzip PBMC_exp.csv.zip 
 ```
 
+**Fig. 1 A**
+
 Next, open CellLayers/Notebooks/PBCM_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
 ```python
@@ -51,8 +53,12 @@ sankey = CellLayers.run(exp_df, meta_df, modularity=mod_df, silhouette=sil_df, g
 sankey.show()
 ```
 <image src="Images/example.png">
+    
+**Fig. 1 B**
 
-
+**Fig. 1 C**
+  
+    
 ## Documentation
 Please consider citing Cell Layers if you used the application or code snippets for your analysis.
     
