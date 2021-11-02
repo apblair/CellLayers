@@ -57,9 +57,12 @@ sankey.show()
 To recreate Figure 1B, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
     
-**Fig. 1 B**
+**Fig. 1 B** Nodes painted byenrichR GO 2018 Biological Process gene set scores for GO:0002480. The node hovertemplate provides users cluster performance metrics (modularity and silhouette scores), GOterm title, enrichR gene set score, and the top 5 differentially expressed genes. Edges arecolored by NK marker gene ​CD8A​.
 
-**Fig. 1 C**
+To recreate Figure 1C, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyter environment and run the following cell:
+
+    
+**Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of ​TNNT2 ​(red), ​COL1A1 ​(green), andNR2F2 ​(blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate thedirection of the co-expression scale for each edge in the Sankey chart.
   
     
 ## Documentation
