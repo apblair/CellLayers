@@ -36,7 +36,7 @@ $ cd CellLayers/Data
 $ unzip PBMC_exp.csv.zip 
 ```
 
-Next, open CellLayers/Notebooks/PBCM_Tutorial.ipynb in a Jupyter environment and run the following cell:
+To recreate Figure 1A, please open CellLayers/Notebooks/PBCM_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
 ```python
 import CellLayers
@@ -53,6 +53,9 @@ sankey.show()
 <image src="Images/example.png">
     
 **Fig. 1 (A)** PBMC mulit-resolution analysis from 0.1 to 0.5. Edges are painted by CD3E, which is a marker gene for CD8+ T, Memory CD4 T, and Naive CD4 T cells. Nodes are painted by Silhouette score. The lower Sihouette values indicate samples are near the decision boundary of neighboring clusters.
+    
+To recreate Figure 1B, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyter environment and run the following cell:
+
     
 **Fig. 1 B**
 

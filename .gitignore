@@ -4,4 +4,5 @@ Data/.ipynb_checkpoints/
 CellLayers/.ipynb_checkpoints/
 Data/PBMC_exp.csv
 Data/_MACOSX/
-Data/TBX5/TBX5_exp.csv
+Data/TBX5/TBX5_exp_*.mtx
+.DS_Store
