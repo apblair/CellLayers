@@ -3,7 +3,7 @@
 Cell Layers is an interactive Sankey tool for the quantitative investigation of gene expression, coexpression, biological processes, and cluster integrity across clustering resolutions.
 
 ## Installation
-Cell Layers may be installed via pip, conda, or Docker.
+Cell Layers may be installed via pip after pulling the repo.
 
 ```bash
 $ git clone git@github.com:apblair/CellLayers.git
@@ -55,7 +55,13 @@ sankey.show()
 
 ## Documentation
 Please consider citing Cell Layers if you used the application or code snippets for your analysis.
-
+    
+**Cell Layers: Uncovering clustering structure and knowledge in unsupervised single-cell transcriptomic analysis**
+    
+Andrew P. Blair, Robert K. Hu, Elie N. Farah, Neil C. Chi, Katherine S. Pollard, Pawel F. Przytycki, Irfan S. Kathiriya, Benoit G. Bruneau
+bioRxiv 2020.11.29.400614; doi: https://doi.org/10.1101/2020.11.29.400614
+    
+    
 ## Authors Contributions
 A.P.B. conceived and initiated the project. R.H assisted in analysis. B.G.B., P.F.P, and I.S.K. supervised A.P.B. I.S.K. provided datasets. K.S.P. advised. All authors commented on the manuscript.
 
