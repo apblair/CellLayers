@@ -1,7 +1,9 @@
 .ipynb_checkpoints/
+
 Notebooks/.ipynb_checkpoints/
 Data/.ipynb_checkpoints/
 CellLayers/.ipynb_checkpoints/
+CellLayers/__pycache__
 Data/PBMC/PBMC_exp.csv
 Data/__MACOSX/*
 Data/TBX5/TBX5_exp_*.mtx
