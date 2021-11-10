@@ -3,6 +3,9 @@ from .MultiResolutionAnalysis import *
 class BuildSankeyNetwork(object):
     
     def __init__(self, sankey_dict, node_color='#F7ED32'):
+        """
+        
+        """
         self.sankey_dict = sankey_dict
         self.starter_gene = [x for x in list(self.sankey_dict['data']) if 'hex' in x.split('_')][0].split('_')[0]
         self.node_color = node_color

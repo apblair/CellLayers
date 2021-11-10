@@ -18,13 +18,30 @@ from plotly.subplots import make_subplots
 
 class MultiResolutionAnalysis:
     def __init__(self, 
-                 exp_df, meta_df, 
+                 exp_df, 
+                 meta_df, 
                  modularity,
                  silhouette,
-                 genes, exp_color,
-                 coexpressed_genes, coexp_color,
+                 genes, 
+                 exp_color,
+                 coexpressed_genes, 
+                 coexp_color,
                  tri_coexpressed_genes,
                  edge_cutoff):
+        """
+        Keyword arguments:
+        
+        - exp_df
+        - meta_df
+        - modularity
+        - silhouette
+        - genes
+        - exp_color
+        - coexpressed_genes
+        - coexp_color
+        - tri_coexpressed_genes
+        - edge_cutoff
+        """
         
         self.exp_df = exp_df
         self.meta_df = meta_df.astype(str)
