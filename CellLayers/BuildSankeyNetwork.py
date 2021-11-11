@@ -4,13 +4,18 @@ class BuildSankeyNetwork(object):
     
     def __init__(self, sankey_dict, node_color='#F7ED32'):
         """
+        Keyword arguments:
         
+        - sankey_dict (dict; required)
+        - node_color (string; optional default '#F7ED32')
         """
         self.sankey_dict = sankey_dict
         self.starter_gene = [x for x in list(self.sankey_dict['data']) if 'hex' in x.split('_')][0].split('_')[0]
         self.node_color = node_color
     
     def _create_sankey_obj(self):
+        '''
+        '''
         return go.Figure(data=[dict(type='sankey', orientation='h', 
                 node = dict(pad = 10, thickness=10,
                             label=self.sankey_dict['node_data']['node_labels'],
@@ -24,6 +29,8 @@ class BuildSankeyNetwork(object):
                             value = self.sankey_dict['data']['value']))])
     
     def _create_gene_exp_buttons(self, fig):
+        '''
+        '''
         gene_buttons = []
         colorbar = []
         genes = [x.split('_')[0] for x in list(self.sankey_dict['data']) if 'hex' in x.split('_')]
@@ -54,6 +61,8 @@ class BuildSankeyNetwork(object):
         return gene_buttons
     
     def _create_colorbar(self, fig, gene, visible=False):
+        '''
+        '''
         fig.add_trace(go.Scatter(x=[None],
                                  y=[None],
                                  mode='markers',
@@ -61,7 +70,8 @@ class BuildSankeyNetwork(object):
                                  marker=self.sankey_dict['exp_colorbar'][gene]))
     
     def _create_silhouette_colorbar(self, fig):
-
+        '''
+        '''
         fig.add_trace(go.Scatter(x=[None],
                    y=[None],
                    mode='markers',
@@ -71,7 +81,8 @@ class BuildSankeyNetwork(object):
                            'showscale':True, 'cmin':-1, 'cmax':1, 'colorbar': {'x':1.1}}))
     
     def _add_functionality(self, fig):
-        
+        '''
+        '''
         gene_buttons = self._create_gene_exp_buttons(fig)
         fig.update_layout(
             updatemenus=[
@@ -104,6 +115,8 @@ class BuildSankeyNetwork(object):
 
         
     def run(self):
+        '''
+        '''
         fig = self._create_sankey_obj()
         self._add_functionality(fig)
         self._create_silhouette_colorbar(fig)
