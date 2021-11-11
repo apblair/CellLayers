@@ -9,4 +9,6 @@ Data/PBMC/PBMC_exp.csv
 Data/TBX5/TBX5_exp.csv
 Data/__MACOSX/*
 Data/TBX5/TBX5_exp_*.mtx
+CellLayers.egg-info/*
+build/*
 .DS_Store

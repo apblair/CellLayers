@@ -41,5 +41,6 @@ def run(
                                  coexpressed_genes, coexp_color,
                                  tri_coexpressed_genes,
                                  edge_cutoff).compute()
-        return BuildSankeyNetwork(sankey_dict, node_color=node_color).run()
+        sankey_fig = BuildSankeyNetwork(sankey_dict, node_color=node_color).run()
+        return sankey_fig, sankey_dict
     
