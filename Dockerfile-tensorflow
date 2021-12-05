@@ -1,6 +1,0 @@
-ARG BASE_CONTAINER=jupyter/tensorflow-notebook
-FROM $BASE_CONTAINER
-
-
-RUN pip install 'plotly==5.3.1' \
-'chart_studio' 
