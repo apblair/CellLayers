@@ -33,6 +33,8 @@ mamba clean --all -f -y
 
 RUN conda update conda
 
+RUN mamba install -c conda-forge jupyterlab
+
 RUN mamba install --yes \
     scanpy \
     anndata \
@@ -71,6 +73,12 @@ RUN mamba install --yes \
     bioconductor-deseq2 \
     r-biocmanager
 
+RUN R -e "BiocManager::install('regioneR')"
+RUN R -e "BiocManager::install('BSgenome.Hsapiens.UCSC.hg38')"
+RUN git clone https://github.com/jvierstra/genome-tools
+RUN cd genome-tools
+RUN python setup.py install --user
+
 #mamba clean -ai
 
 #RUN pip install git+https://github.com/DmitryUlyanov/Multicore-TSNE.git
@@ -79,8 +87,8 @@ RUN mamba install --yes \
 
 #RUN pip install --quiet --no-cache-dir dask-labextension && \
 #fix-permissions "${CONDA_DIR}" && \
-#fix-permissions "/home/${NB_USER}"
- 
+#fix-permissions "/home/${NB_USER}" 
+
 #RUN R -e "install.packages(c('sf', 'BiocManager', 'optparse', 'devtools', 'remotes', 'SMDTools', 'glue','miniUI'), repo='http://cran.rstudio.com/')"
 #RUN R -e "BiocManager::install(c('patchwork', 'SingleCellExperiment', 'limma', 'enrichr'))"
 
