@@ -1,6 +1,6 @@
 from .MultiResolutionAnalysis import *
 
-class BuildSankeyNetwork(object):
+class BuildSankey(object):
     
     def __init__(self, sankey_dict, node_color='#F7ED32'):
         """
