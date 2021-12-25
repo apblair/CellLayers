@@ -5,6 +5,13 @@ class BuildEnrichmentSankey:
                  geneset_oi,
                  enrichment_df
                 ):
+                """
+        Keyword arguments:
+        - sankey_dict
+        - starter_gene
+        - enrichment_df
+        - enrichment_df
+        """
         self.sankey_dict = sankey_dict
         self.starter_gene = starter_gene
         self.geneset_oi = geneset_oi
@@ -15,8 +22,8 @@ class BuildEnrichmentSankey:
         """
         """
         label_list = []
-        for data in self.sankey_dict['node_data'][['modularity', 'silhoutte_score', gene_set + '_combined.score', 'top_genes']].values:
-            label = '<br />' + gene_set + '<br />' + 'Gene Set Score: ' + str(data[2]) + '<br />' + 'Top Genes: ' + str(data[-1])
+        for data in self.sankey_dict['node_data'][['modularity', 'silhoutte_score', self.starter_geneset + '_combined.score', 'top_genes']].values:
+            label = '<br />' + self.starter_geneset + '<br />' + 'Gene Set Score: ' + str(data[2]) + '<br />' + 'Top Genes: ' + str(data[-1])
             label_list.append(label)
         self.sankey_dict['node_data']['label'] = label_list
     
@@ -61,11 +68,6 @@ class BuildEnrichmentSankey:
                                  'cmax':max(pbmc_gsea[pbmc_gsea['gene.set'].isin([self.starter_geneset])]['combined.score'].tolist()), 
                                  'colorbar': {'x':1.1}}))
     
-    # def _axis_layout(self, fig):
-    #     """
-    #     Parameters
-    #     ----------
-    #     """
         
     def _create_dropdown_menus(self, fig):
         """
@@ -74,14 +76,12 @@ class BuildEnrichmentSankey:
         """
         fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)',
                            'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
-
         fig.update_xaxes(showticklabels=False) # hide all the xticks
         fig.update_yaxes(showticklabels=False) # hide all the xticks
         fig['layout']['showlegend'] = False
         fig['layout']['xaxis']['showgrid'] = False
         fig['layout']['yaxis']['showgrid'] = False
         fig.update_layout(xaxis_zeroline=False, yaxis_zeroline=False)
-    
         fig.update_layout(
             updatemenus=[
                 dict(y=-0.2,
@@ -98,7 +98,6 @@ class BuildEnrichmentSankey:
                  dict(y=0.4,
                       buttons=[dict(label='Light', method='relayout', args=['paper_bgcolor', 'white']),
                                dict(label='Dark', method='relayout', args=['paper_bgcolor', 'black'])])])
-
         
     def run(self):
         """
