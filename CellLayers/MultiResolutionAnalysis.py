@@ -59,7 +59,7 @@ class MultiResolutionAnalysis:
         
         if silhouette is not None:
             self.sankey_dict['silhouette'] = {data[0]:data[1] for data in silhouette.values}
-
+            
         if modularity is not None:
             self.sankey_dict['modularity'] = {data[0]:data[1] for data in modularity.values}
             
@@ -192,6 +192,8 @@ class MultiResolutionAnalysis:
         """
         node_df = pd.DataFrame(self.sankey_dict['node_labels'], columns=['node_labels'])
         node_df['res'] = [x.split('_')[0] for x in node_df['node_labels'].tolist()]
+        print(node_df)
+        print(self.sankey_dict['modularity'])
         node_df['modularity'] = [round(self.sankey_dict['modularity'][x],2) for x in node_df['res']]
         node_df['silhoutte_score'] = [round(self.sankey_dict['silhouette'][x],2) for x in node_df['node_labels']]
         node_df['new_label'] = ['Modularity '+str(items[-2:][0]) + '<br />' + 'Silhouette ' + str(items[-2:][1]) for items in node_df.values]
