@@ -1,6 +1,7 @@
 from .BuildSankey import *
+from .BuildEnrichmentSankey import *
 
-def run(
+def build_sankey(
     exp_df,
     meta_df,
     modularity=None,
@@ -43,4 +44,25 @@ def run(
                                  edge_cutoff).compute()
         sankey_fig = BuildSankey(sankey_dict, node_color=node_color).run()
         return sankey_fig, sankey_dict
+
+def build_enrichment_sankey(sankey_dict, 
+                            geneset_oi,
+                            enrichment_df, 
+                            leading_edge, 
+                            genes):
+    """
+    Return a Cell Layers Plotly object.
+    
+    Keyword arguments:
+    """
+    sankey_dict = EnrichmentSankey(sankey_dict,
+                               geneset_oi,
+                               enrichment_df,
+                               leading_edge).run()
+    enrichment_fig, enrichment_sankey_dict = BuildEnrichmentSankey(sankey_dict,
+                                              genes,
+                                              geneset_oi,
+                                              enrichment_df).run()
+    return enrichment_fig, sankey_dict
+
     

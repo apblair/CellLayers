@@ -1,11 +1,12 @@
+from .EnrichmentSankey import *
 class BuildEnrichmentSankey:
     def __init__(self, 
                  sankey_dict,
-                 starter_gene,
+                 genes,
                  geneset_oi,
                  enrichment_df
                 ):
-                """
+        """
         Keyword arguments:
         - sankey_dict
         - starter_gene
@@ -13,7 +14,8 @@ class BuildEnrichmentSankey:
         - enrichment_df
         """
         self.sankey_dict = sankey_dict
-        self.starter_gene = starter_gene
+        self.genes = genes
+        self.starter_gene = genes[0]
         self.geneset_oi = geneset_oi
         self.starter_geneset = geneset_oi[-1]
         self.enrichment_df = enrichment_df
@@ -64,8 +66,8 @@ class BuildEnrichmentSankey:
                          visible=True,
                          marker={'colorscale':self.sankey_dict['node_data'][[self.starter_geneset + '_combined.score', self.starter_geneset+'_hex']].sort_values(self.starter_geneset + '_combined.score')[self.starter_geneset+'_hex'].tolist(), 
                                  'showscale':True, 
-                                 'cmin':min(pbmc_gsea[pbmc_gsea['gene.set'].isin([self.starter_geneset])]['combined.score'].tolist()),
-                                 'cmax':max(pbmc_gsea[pbmc_gsea['gene.set'].isin([self.starter_geneset])]['combined.score'].tolist()), 
+                                 'cmin':min(self.enrichment_df[self.enrichment_df['gene.set'].isin([self.starter_geneset])]['combined.score'].tolist()),
+                                 'cmax':max(self.enrichment_df[self.enrichment_df['gene.set'].isin([self.starter_geneset])]['combined.score'].tolist()), 
                                  'colorbar': {'x':1.1}}))
     
         

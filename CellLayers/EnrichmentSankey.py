@@ -1,7 +1,9 @@
+from .MultiResolutionAnalysis import *
+
 class EnrichmentSankey:
     def __init__(self, 
                  sankey_dict,
-                 genset_oi,
+                 geneset_oi,
                  enrichment_df,
                  leading_edge
                 ):
@@ -42,7 +44,7 @@ class EnrichmentSankey:
                                                vmax=max(self.sankey_dict['node_data'][geneset_name+'_combined.score']),
                                                clip=False)
             mapper = cm.ScalarMappable(norm=norm, cmap=cm.YlGn)
-            sankey_dict['node_data'][geneset_name+'_hex'] = [mcolors.to_hex(mapper.to_rgba(mapper_color)) 
+            self.sankey_dict['node_data'][geneset_name+'_hex'] = [mcolors.to_hex(mapper.to_rgba(mapper_color)) 
                                                              for mapper_color in self.sankey_dict['node_data'][geneset_name+'_combined.score'].tolist()]
         self.sankey_dict['node_data'] = pd.merge(self.sankey_dict['node_data'],
                                                  self.leading_edge,
@@ -54,4 +56,4 @@ class EnrichmentSankey:
     def run(self):
         enrichment_dict = self._create_enrichment_dict()
         self._add_enrichment(enrichment_dict)
-        return sankey_fig, sankey_dict
+        return self.sankey_dict
