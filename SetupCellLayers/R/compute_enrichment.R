@@ -19,3 +19,29 @@ compute_enrichment <- function(){
         }
     }
 }
+
+select_geneset_markers <- function(){
+    for (res in names(markers_list)){
+        markers_list[[res]][,'cluster'] <- paste0(res, '_', markers_list[[res]][,'cluster'])
+    }
+    markers_df <- do.call("rbind", markers_list)
+    top_genes_df <- data.frame(res=c(), top_genes=c())
+    for (c in unique(markers_df$cluster)){
+        c_df <- markers_df %>% filter(cluster %in% c)
+        top_genes <- paste(c_df$gene[1:5], collapse=',')
+        row <- data.frame(res=c(c), top_genes = c(top_genes))
+        top_genes_df <- rbind(top_genes_df, row)
+    }
+    colnames(top_genes_df) <- c('res_cluster', 'top_genes')
+    write.csv(top_genes_df, '../Data/PBMC/pbmc_top_genes.csv')
+
+}
+
+
+
+enriched_combined <- Reduce(function(...) merge(..., by='gene.set',all=T), enrich_list)
+enriched_combined[is.na(enriched_combined)] <- 0
+enriched_combined <- gather(enriched_combined, 'res', 'combined.score', -gene.set)
+colnames(enriched_combined) <- c('gene.set', 'res_cluster', 'combined.score')
+
+                            

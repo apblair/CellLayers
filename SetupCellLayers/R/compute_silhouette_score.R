@@ -18,6 +18,11 @@ compute_silhouette_score <- function(res,sobj){
     return(sil_list)
 }
 
+#' Export silhouette scores
+#'
+#' @param 
+#' @return
+#' @export
 export_silhouette_scores <- function(){
     for(i in seq_along(cl.prep$sil)){
         cl.prep$sil[i][[1]][,1] <- paste(colnames(cl.prep$sil[i][[1]])[1], cl.prep$sil[i][[1]][,1], sep='_')
