@@ -7,6 +7,8 @@
 #' @return sil_df
 #' @import Seurat
 #' @import cluster
+#' @import dplyr
+#' @import tidyr
 #' @export
 compute_silhouette_scores <- function(sobj, res_search, output_path){
     sil_list <- list()
@@ -29,6 +31,8 @@ compute_silhouette_scores <- function(sobj, res_search, output_path){
 #'
 #' @param sil_list
 #' @return sil_df
+#' @import dplyr
+#' @import tidyr
 #' @export
 wrangle_silhouette_scores <- function(sil_list){
     for(i in seq_along(sil_list)){
