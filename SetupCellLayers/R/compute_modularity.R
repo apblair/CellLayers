@@ -2,7 +2,7 @@
 #'
 #' @param sobj A Seurat object
 #' @param res_search A sequence of louvain resolution parameters
-#' @param output_path Path to exporting the louvain cluster modularity scores at each resolution
+#' @param output_path Path of the file containing the louvain cluster modularity scores at each resolution
 #' @return cl.setup A list containing the Seurat object and modularity dataframe
 #' @export
 compute_modularity <- function(sobj, res_search, output_path){

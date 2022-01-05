@@ -4,7 +4,7 @@
 #' @param sobj
 #' @return 
 #' @export
-compute_enrichment <- function(dbs, sobj, res_search){
+compute_enrichment <- function(dbs, sobj, res_search, output_){
     enrich_list <- list()
     enrich_list2 <- list()
     markers_list <- list()

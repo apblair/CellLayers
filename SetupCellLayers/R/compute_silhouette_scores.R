@@ -3,9 +3,10 @@
 #'
 #' @param sobj A Seurat object
 #' @param res_search A sequence of louvain resolution parameters
+#' @param output_path Path of the file containing the silhouette scores for each louvain resolution's clusters
 #' @return sil_df
 #' @export
-compute_silhouette_scores <- function(sobj,res_search){
+compute_silhouette_scores <- function(sobj, res_search, output_path){
     sil_list <- list()
     for (j in 1:length(res_search)) {
         Idents(sobj) <- res_search[j]
@@ -18,13 +19,14 @@ compute_silhouette_scores <- function(sobj,res_search){
         sil_list[[res_search[j]]] <- sil_summary
     }
     sil_df <- wrangle_silhouette_scores(sil_list)
+    write.csv(sil_df, output_path)
     return(sil_df)
 }
 
 #' Export silhouette scores
 #'
 #' @param sil_list
-#' @return
+#' @return sil_df
 #' @export
 wrangle_silhouette_scores <- function(sil_list){
     for(i in seq_along(sil_list)){
