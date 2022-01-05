@@ -1,12 +1,17 @@
-
-compute_enrichment <- function(){
-    dbs <- "GO_Biological_Process_2018"
+#' Compute enrichment
+#'
+#' @param dbs
+#' @param sobj
+#' @return 
+#' @export
+compute_enrichment <- function(dbs, sobj, res_search){
     enrich_list <- list()
     enrich_list2 <- list()
-    markers_list <- list() 
-    for (res in seq(0.1, 0.5, by=0.1)){
-        Idents(cl.prep$sobj) <- paste0('res.', res)
-        df <- FindAllMarkers(cl.prep$sobj, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+    markers_list <- list()
+    # TODO: Update res_search parameter for loop
+    for (res in res_search){
+        Idents(sobj) <- paste0('res.', res)
+        df <- FindAllMarkers(sobj, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
         markers_list[[paste0('res.', res)]] <- df
         for (c in unique(df$cluster)){
             c_df <- df %>% filter(cluster %in% c)
@@ -18,9 +23,15 @@ compute_enrichment <- function(){
             enrich_list[[paste0('res.', res, '_', c)]] <- enriched
         }
     }
+    select_geneset_markers(markers_list)
 }
 
-select_geneset_markers <- function(){
+#' Compute enrichment
+#'
+#' @param markers_list
+#' @return 
+#' @export
+select_geneset_markers <- function(markers_list){
     for (res in names(markers_list)){
         markers_list[[res]][,'cluster'] <- paste0(res, '_', markers_list[[res]][,'cluster'])
     }
