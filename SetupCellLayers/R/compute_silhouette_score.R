@@ -17,3 +17,13 @@ compute_silhouette_score <- function(res,sobj){
     }
     return(sil_list)
 }
+
+export_silhouette_scores <- function(){
+    for(i in seq_along(cl.prep$sil)){
+        cl.prep$sil[i][[1]][,1] <- paste(colnames(cl.prep$sil[i][[1]])[1], cl.prep$sil[i][[1]][,1], sep='_')
+        colnames(cl.prep$sil[i][[1]])[1] <- "res"
+        cl.prep$sil[i][[1]] <- cl.prep$sil[i][[1]]
+    }
+    sil_df <- Reduce(function(...) full_join(..., by = c('sil', 'res')), cl.prep$sil)
+    colnames(sil_df) <- c('res_cluster', 'sil')
+}
