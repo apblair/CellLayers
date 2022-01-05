@@ -2,13 +2,15 @@
 #'
 #' @param dbs
 #' @param sobj
+#' @param res_search
+#' @param output_path
 #' @return 
 #' @export
-compute_enrichment <- function(dbs, sobj, res_search, output_){
+compute_enrichment <- function(dbs, sobj, res_search, output_path){
     enrich_list <- list()
     enrich_list2 <- list()
     markers_list <- list()
-    # TODO: Update res_search parameter for loop
+    # TODO: Update res_search parameter for loop. Clanky!
     for (res in res_search){
         Idents(sobj) <- paste0('res.', res)
         df <- FindAllMarkers(sobj, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
@@ -23,10 +25,18 @@ compute_enrichment <- function(dbs, sobj, res_search, output_){
             enrich_list[[paste0('res.', res, '_', c)]] <- enriched
         }
     }
-    select_geneset_markers(markers_list)
+    top_genes_df <- select_geneset_markers(markers_list)
+    write.csv(top_genes_df, paste0(output_path, 'top_genes.csv'))
+    
+    enriched_combined <- Reduce(function(...) merge(..., by='gene.set',all=T), enrich_list)
+    enriched_combined[is.na(enriched_combined)] <- 0
+    enriched_combined <- gather(enriched_combined, 'res', 'combined.score', -gene.set)
+    colnames(enriched_combined) <- c('gene.set', 'res_cluster', 'combined.score')
+    write.csv(enriched_combined, paste0(output_path,'enrichment.csv'))
 }
 
-#' Compute enrichment
+#' Select geneset markers 
+#' Default is the top 5 genes
 #'
 #' @param markers_list
 #' @return 
@@ -44,15 +54,11 @@ select_geneset_markers <- function(markers_list){
         top_genes_df <- rbind(top_genes_df, row)
     }
     colnames(top_genes_df) <- c('res_cluster', 'top_genes')
-    write.csv(top_genes_df, '../Data/PBMC/pbmc_top_genes.csv')
-
+    return(top_genes_df)
 }
 
 
 
-enriched_combined <- Reduce(function(...) merge(..., by='gene.set',all=T), enrich_list)
-enriched_combined[is.na(enriched_combined)] <- 0
-enriched_combined <- gather(enriched_combined, 'res', 'combined.score', -gene.set)
-colnames(enriched_combined) <- c('gene.set', 'res_cluster', 'combined.score')
+
 
                             

@@ -23,7 +23,7 @@ compute_silhouette_scores <- function(sobj, res_search, output_path){
     return(sil_df)
 }
 
-#' Export silhouette scores
+#' Wrangle silhouette scores
 #'
 #' @param sil_list
 #' @return sil_df
