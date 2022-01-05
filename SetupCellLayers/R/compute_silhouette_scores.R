@@ -5,8 +5,8 @@
 #' @param res_search A sequence of louvain resolution parameters
 #' @param output_path Path of the file containing the silhouette scores for each louvain resolution's clusters                                              
 #' @return sil_df
-#' @importFrom Seurat
-#' @importFrom clusters
+#' @import Seurat
+#' @import clusters
 #' @export
 compute_silhouette_scores <- function(sobj, res_search, output_path){
     sil_list <- list()
