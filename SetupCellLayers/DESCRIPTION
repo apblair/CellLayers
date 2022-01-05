@@ -1,10 +1,10 @@
 Package: SetupCellLayers
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Setup input data for CellLayers Sankey Network 
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Andrew", "Blair", , "andrew.blair@ucsf.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-3196-6233"))
+Description: Generate multi-resolution cluster evaluation metrics and gene set enrichment data for CellLayers.
+Version: 0.0.0.9000
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
