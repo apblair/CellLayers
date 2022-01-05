@@ -11,6 +11,12 @@ $ cd CellLayers
 $ pip install .
 ```
 
+```R
+> library(devtools)
+> setwd("CellLayers")
+> devtools::install_github("apblair/CellLayers/SetupCellLayers")
+```
+
 ```bash
 $ docker pull bruneaulab/cell-layers:0.1
 ```
