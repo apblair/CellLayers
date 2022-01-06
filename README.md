@@ -3,7 +3,7 @@
 Cell Layers is an interactive Sankey tool for the quantitative investigation of gene expression, coexpression, biological processes, and cluster integrity across clustering resolutions.
 
 ## Installation
-Cell Layers may be installed via pip after pulling the repo.
+The CellLayers Python module can be installed via pip after cloning the repository. Please note, the Python module requires the cluster metric and enrichment data to be generated independently or via our R library SetupCellLayers. 
 
 ```bash
 $ git clone git@github.com:apblair/CellLayers.git
@@ -11,12 +11,15 @@ $ cd CellLayers
 $ pip install .
 ```
 
+The SetupCellLayers R library can be installed via devtools after cloning the repository.
 ```R
 > library(devtools)
 > setwd("CellLayers")
 > devtools::install_github("apblair/CellLayers/SetupCellLayers")
+> library(SetupCellLayers)
 ```
 
+We have also provided a Docker image, which encapsulates the environment to run CellLayers. 
 ```bash
 $ docker pull bruneaulab/cell-layers:0.1
 ```
@@ -33,7 +36,7 @@ $ singularity build cell-layers.sif docker://bruneaulab/cell-layers:0.1
 $ singularity exec cell-layers.sif start.sh jupyter lab --port=9595
 ```
 
-## Usage
+## Tutorial: Reproduce publication figure
 
 Please unzip the tutorial's expression data.
 
@@ -53,7 +56,11 @@ pbmc_meta = pd.read_csv('Data/PBMC_meta.csv', index_col=[0]) # cell by resolutio
 pbmc_modularity = pd.read_csv('Data/pbmc_modularity.csv', index_col=[0])
 pbmc_sil = pd.read_csv('Data/pbmc_silhouette_scores.csv', index_col=[0])
 
-sankey = CellLayers.run(exp_df, meta_df, modularity=mod_df, silhouette=sil_df, genes=['CD3E'])
+sankey = CellLayers.build_sankey(exp_df,
+                                 meta_df,
+                                 modularity=mod_df,
+                                 silhouette=sil_df,
+                                 genes=['CD3E','FCER1A'])
 sankey.show()
 ```
 <image src="Images/example.png">
@@ -67,9 +74,9 @@ To recreate Figure 1B, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a
 
 To recreate Figure 1C, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
-    
 **Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of ​TNNT2 ​(red), ​COL1A1 ​(green), andNR2F2 ​(blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate thedirection of the co-expression scale for each edge in the Sankey chart.
   
+## Tutorial: Setup CellLayers input data
     
 ## Documentation
 Please consider citing Cell Layers if you used the application or code snippets for your analysis.
