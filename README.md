@@ -44,6 +44,7 @@ Please unzip the tutorial's expression data.
 $ cd CellLayers/Data
 $ unzip PBMC_exp.csv.zip 
 ```
+---
 
 To recreate **Figure 1A**, please open CellLayers/Notebooks/PBCM_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
