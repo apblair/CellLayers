@@ -111,12 +111,12 @@ cl.setup <- compute_modularity(sobj, seq(0.1, 0.5, by=0.1),
 
 cl.setup[['sil']] <- compute_silhouette_scores(cl.setup$sobj,
                                                as.character(cl.setup$mod$'resolution'),
-                                               '../Data/Test-SetupCellLayers/PBMC_silhouette_scores.csv')
+                                               'CellLayers/Data/Test-SetupCellLayers/PBMC_silhouette_scores.csv')
 
 compute_enrichment("GO_Biological_Process_2018", 
                    cl.setup$sobj, 
                    seq(0.1, 0.5, by=0.1), 
-                   '../Data/Test-SetupCellLayers/')
+                   'CellLayers/Data/Test-SetupCellLayers/')
 
 ```
     
