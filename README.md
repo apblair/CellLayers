@@ -95,7 +95,7 @@ enrichment_sankey_fig.show()
     
 To recreate **Figure 1C**, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb and run the following cell:
 
-**Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of _TNNT2_ (red), _COL1A1_ (green), and _NR2F2_ (blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate thedirection of the co-expression scale for each edge in the Sankey chart.
+**Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of _TNNT2_ (red), _COL1A1_ (green), and _NR2F2_ (blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate the direction of the co-expression scale for each edge in the Sankey chart.
   
 ## Tutorial: Generate input data using SetupCellLayers
     
@@ -103,8 +103,20 @@ To recreate **Figure 1C**, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb 
 library(enrichR)
 library(Seurat)
 library(SetupCellLayers)
+
 sobj <- readRDS('../Data/PBMC/pbmc3k_CellLayers.rds')
 
+cl.setup <- compute_modularity(sobj, seq(0.1, 0.5, by=0.1),
+                               'CellLayers/Data/Test-SetupCellLayers/PBMC_modularity.csv')
+
+cl.setup[['sil']] <- compute_silhouette_scores(cl.setup$sobj,
+                                               as.character(cl.setup$mod$'resolution'),
+                                               '../Data/Test-SetupCellLayers/PBMC_silhouette_scores.csv')
+
+compute_enrichment("GO_Biological_Process_2018", 
+                   cl.setup$sobj, 
+                   seq(0.1, 0.5, by=0.1), 
+                   '../Data/Test-SetupCellLayers/')
 
 ```
     
