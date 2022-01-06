@@ -46,7 +46,7 @@ $ unzip PBMC_exp.csv.zip
 ```
 ---
 
-To recreate **Figure 1A**, please open [PBMC_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
+To recreate **Figure 1A**, please follow [PBMC_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
 
 ```python
 import CellLayers
@@ -70,7 +70,7 @@ sankey_fig.show()
 
 ---
     
-To recreate **Figure 1B**, please open [PBMC_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
+To recreate **Figure 1B**, please follow [PBMC_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
 
 ```Python
 pbmc_enrichment = pd.read_csv('CellLayers/Data/PBMC/pbmc_enrichment.csv', index_col=[0]) # geneset, cluster resolution communities, and combined score
@@ -98,13 +98,15 @@ To recreate **Figure 1C**, please open [TBX5_Tutorial.ipynb](https://github.com/
 **Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of _TNNT2_ (red), _COL1A1_ (green), and _NR2F2_ (blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate the direction of the co-expression scale for each edge in the Sankey chart.
   
 ## Tutorial: Generate input data using SetupCellLayers
-    
+
+To create the PBMC CellLayers input data using **SetupCellLayers**, please follow [PBMC_SetupCellLayers.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_SetupCellLayers.ipynb)
+
 ```R
 library(enrichR)
 library(Seurat)
 library(SetupCellLayers)
 
-sobj <- readRDS('../Data/PBMC/pbmc3k_CellLayers.rds')
+sobj <- readRDS('CellLayers/Data/PBMC/pbmc3k_CellLayers.rds')
 
 cl.setup <- compute_modularity(sobj, seq(0.1, 0.5, by=0.1),
                                'CellLayers/Data/Test-SetupCellLayers/PBMC_modularity.csv')
