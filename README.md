@@ -46,7 +46,8 @@ $ unzip PBMC_exp.csv.zip
 ```
 ---
 
-To recreate **Figure 1A**, please open [PBCM_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
+To recreate **Figure 1A**, please open [PBMC_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
+
 ```python
 import CellLayers
 import pandas as pd
@@ -63,13 +64,13 @@ sankey_fig, sankey_dict = CellLayers.build_sankey(pbmc_exp,
                                  genes=['CD3E','FCER1A'])
 sankey_fig.show()
 ```
-<image src="Images/example.png">
+<!-- <image src="Images/example.png"> -->
     
 **Fig. 1 (A)** PBMC multi-resolution analysis from 0.1 to 0.5. Edges are painted by _CD3E_, which is a marker gene for CD8+ T, Memory CD4 T, and Naive CD4 T cells. Nodes are painted by Silhouette score. The lower Sihouette values indicate samples are near the decision boundary of neighboring clusters.
 
 ---
     
-To recreate **Figure 1B**, please open [PBCM_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
+To recreate **Figure 1B**, please open [PBMC_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
 
 ```Python
 pbmc_enrichment = pd.read_csv('CellLayers/Data/PBMC/pbmc_enrichment.csv', index_col=[0]) # geneset, cluster resolution communities, and combined score
@@ -92,7 +93,7 @@ enrichment_sankey_fig.show()
     
 ---
     
-To recreate **Figure 1C**, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb and run the following cell:
+To recreate **Figure 1C**, please open [TBX5_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/TBX5_Tutorial.ipynb) and run the following cell:
     
 **Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of _TNNT2_ (red), _COL1A1_ (green), and _NR2F2_ (blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate the direction of the co-expression scale for each edge in the Sankey chart.
   
