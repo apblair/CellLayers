@@ -93,13 +93,13 @@ enrichment_sankey_fig.show()
     
 ---
     
-To recreate **Figure 1C**, please open [TBX5_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/TBX5_Tutorial.ipynb) and run the following cell:
+To recreate **Figure 1C**, please follow [TBX5_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/TBX5_Tutorial.ipynb):
     
 **Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of _TNNT2_ (red), _COL1A1_ (green), and _NR2F2_ (blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate the direction of the co-expression scale for each edge in the Sankey chart.
   
 ## Tutorial: Generate input data using SetupCellLayers
 
-To create the PBMC CellLayers input data using **SetupCellLayers**, please follow [PBMC_SetupCellLayers.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_SetupCellLayers.ipynb)
+To create the PBMC CellLayers input data using **SetupCellLayers**, please follow [PBMC_SetupCellLayers.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_SetupCellLayers.ipynb).
 
 ```R
 library(enrichR)
