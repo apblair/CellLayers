@@ -38,10 +38,10 @@ $ singularity exec cell-layers.sif start.sh jupyter lab --port=9595
 
 ## Tutorial: Reproduce publication figure
 
-Please unzip the tutorial's expression data.
+To begin the tutorial, please unzip the tutorial's expression data.
 
 ```bash
-$ cd CellLayers/Data
+$ cd CellLayers/PBMC/Data
 $ unzip PBMC_exp.csv.zip 
 ```
 ---
