@@ -93,7 +93,7 @@ enrichment_sankey_fig.show()
     
 ---
     
-To recreate Figure 1C, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyenfarahter environment and run the following cell:
+To recreate **Figure 1C**, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyenfarahter environment and run the following cell:
 
 **Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of ​TNNT2 ​(red), ​COL1A1 ​(green), andNR2F2 ​(blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate thedirection of the co-expression scale for each edge in the Sankey chart.
   
