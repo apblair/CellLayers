@@ -53,8 +53,8 @@ import pandas as pd
 
 pbmc_exp = pd.read_csv('Data/PBMC_exp.csv', index_col=[0]) # cell by gene expression matrix
 pbmc_meta = pd.read_csv('Data/PBMC_meta.csv', index_col=[0]) # cell by resolution matrix
-pbmc_modularity = pd.read_csv('Data/pbmc_modularity.csv', index_col=[0])
-pbmc_silhouette_scores = pd.read_csv('Data/pbmc_silhouette_scores.csv', index_col=[0])
+pbmc_modularity = pd.read_csv('Data/pbmc_modularity.csv', index_col=[0]) # cluster resolution modularity scores
+pbmc_silhouette_scores = pd.read_csv('Data/pbmc_silhouette_scores.csv', index_col=[0]) # cluster resolution community silhouette scores
 
 sankey_fig, sankey_dict = CellLayers.build_sankey(pbmc_exp,
                                  pbmc_meta,
@@ -69,6 +69,22 @@ sankey_fig.show()
     
 To recreate Figure 1B, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
+```Python
+pbmc_enrichment = pd.read_csv('../Data/PBMC/pbmc_enrichment.csv', index_col=[0]) # geneset, cluster resolution communities, and combined score
+pbmc_top_genes = pd.read_csv('../Data/PBMC/pbmc_top_genes.csv', index_col=[0]) # cluster resolution communities and top genes
+
+# Create a list of your gene set(s) of interest
+geneset_oi = ['antigen processing and presentation of exogenous peptide antigen via MHC class II (GO:0019886)',
+              'antigen processing and presentation of exogenous peptide antigen via MHC class I, TAP-independent (GO:0002480)']
+
+genes = ['CD3E']
+enrichment_sankey_fig, enrichment_sankey_dict = CellLayers.build_enrichment_sankey(sankey_dict,
+                                                                            geneset_oi,
+                                                                            pbmc_enrichment,
+                                                                            pbmc_top_genes,
+                                                                            genes)
+enrichment_sankey_fig.show()
+```
     
 **Fig. 1 B** Nodes painted byenrichR GO 2018 Biological Process gene set scores for GO:0002480. The node hovertemplate provides users cluster performance metrics (modularity and silhouette scores), GOterm title, enrichR gene set score, and the top 5 differentially expressed genes. Edges arecolored by NK marker gene ​CD8A​.
 
