@@ -46,8 +46,7 @@ $ unzip PBMC_exp.csv.zip
 ```
 ---
 
-To recreate **Figure 1A**, please open [PBCM_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb) and run the following cell:
-
+To recreate **Figure 1A**, please open [PBCM_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
 ```python
 import CellLayers
 import pandas as pd
@@ -66,11 +65,11 @@ sankey_fig.show()
 ```
 <image src="Images/example.png">
     
-**Fig. 1 (A)** PBMC mulit-resolution analysis from 0.1 to 0.5. Edges are painted by _CD3E_, which is a marker gene for CD8+ T, Memory CD4 T, and Naive CD4 T cells. Nodes are painted by Silhouette score. The lower Sihouette values indicate samples are near the decision boundary of neighboring clusters.
+**Fig. 1 (A)** PBMC multi-resolution analysis from 0.1 to 0.5. Edges are painted by _CD3E_, which is a marker gene for CD8+ T, Memory CD4 T, and Naive CD4 T cells. Nodes are painted by Silhouette score. The lower Sihouette values indicate samples are near the decision boundary of neighboring clusters.
 
 ---
     
-To recreate **Figure 1B**, please open CellLayers/Notebooks/PBMC_Tutorial.ipynb and run the following cell:
+To recreate **Figure 1B**, please open [PBCM_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb).
 
 ```Python
 pbmc_enrichment = pd.read_csv('CellLayers/Data/PBMC/pbmc_enrichment.csv', index_col=[0]) # geneset, cluster resolution communities, and combined score
