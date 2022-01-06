@@ -89,13 +89,13 @@ enrichment_sankey_fig, enrichment_sankey_dict = CellLayers.build_enrichment_sank
 enrichment_sankey_fig.show()
 ```
     
-**Fig. 1 B** Nodes painted by enrichR GO 2018 Biological Process gene set scores for GO:0002480. The node hovertemplate provides users cluster performance metrics (modularity and silhouette scores), GO term, enrichR gene set score, and the top 5 differentially expressed genes. Edges are colored by NK marker gene _CD8A_.
+**Fig. 1 (B)** Nodes painted by enrichR GO 2018 Biological Process gene set scores for GO:0002480. The node hovertemplate provides users cluster performance metrics (modularity and silhouette scores), GO term, enrichR gene set score, and the top 5 differentially expressed genes. Edges are colored by NK marker gene _CD8A_.
     
 ---
     
 To recreate **Figure 1C**, please follow [TBX5_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/TBX5_Tutorial.ipynb):
     
-**Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of _TNNT2_ (red), _COL1A1_ (green), and _NR2F2_ (blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate the direction of the co-expression scale for each edge in the Sankey chart.
+**Fig. 1 (C)** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of _TNNT2_ (red), _COL1A1_ (green), and _NR2F2_ (blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate the direction of the co-expression scale for each edge in the Sankey chart.
   
 ## Tutorial: Generate input data using SetupCellLayers
 
