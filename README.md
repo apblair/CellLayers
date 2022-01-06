@@ -66,6 +66,8 @@ sankey_fig.show()
 <image src="Images/example.png">
     
 **Fig. 1 (A)** PBMC mulit-resolution analysis from 0.1 to 0.5. Edges are painted by CD3E, which is a marker gene for CD8+ T, Memory CD4 T, and Naive CD4 T cells. Nodes are painted by Silhouette score. The lower Sihouette values indicate samples are near the decision boundary of neighboring clusters.
+
+---
     
 To recreate **Figure 1B**, please open CellLayers/Notebooks/PBMC_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
@@ -86,8 +88,8 @@ enrichment_sankey_fig, enrichment_sankey_dict = CellLayers.build_enrichment_sank
 enrichment_sankey_fig.show()
 ```
     
-**Fig. 1 B** Nodes painted byenrichR GO 2018 Biological Process gene set scores for GO:0002480. The node hovertemplate provides users cluster performance metrics (modularity and silhouette scores), GOterm title, enrichR gene set score, and the top 5 differentially expressed genes. Edges arecolored by NK marker gene ​CD8A​.
-enfarah
+**Fig. 1 B** Nodes painted byenrichR GO 2018 Biological Process gene set scores for GO:0002480. The node hovertemplate provides users cluster performance metrics (modularity and silhouette scores), GOterm title, enrichR gene set score, and the top 5 differentially expressed genes. Edges arecolored by NK marker gene ​CD8A​.    
+---
 To recreate Figure 1C, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyenfarahter environment and run the following cell:
 
 **Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of ​TNNT2 ​(red), ​COL1A1 ​(green), andNR2F2 ​(blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate thedirection of the co-expression scale for each edge in the Sankey chart.
