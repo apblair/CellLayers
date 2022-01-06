@@ -52,10 +52,10 @@ To recreate **Figure 1A**, please open CellLayers/Notebooks/PBCM_Tutorial.ipynb 
 import CellLayers
 import pandas as pd
 
-pbmc_exp = pd.read_csv('Data/PBMC_exp.csv', index_col=[0]) # cell by gene expression matrix
-pbmc_meta = pd.read_csv('Data/PBMC_meta.csv', index_col=[0]) # cell by resolution matrix
-pbmc_modularity = pd.read_csv('Data/pbmc_modularity.csv', index_col=[0]) # cluster resolution modularity scores
-pbmc_silhouette_scores = pd.read_csv('Data/pbmc_silhouette_scores.csv', index_col=[0]) # cluster resolution community silhouette scores
+pbmc_exp = pd.read_csv('CellLayers/Data/PBMC_exp.csv', index_col=[0]) # cell by gene expression matrix
+pbmc_meta = pd.read_csv('CellLayers/Data/PBMC_meta.csv', index_col=[0]) # cell by resolution matrix
+pbmc_modularity = pd.read_csv('CellLayers/Data/pbmc_modularity.csv', index_col=[0]) # cluster resolution modularity scores
+pbmc_silhouette_scores = pd.read_csv('CellLayers/Data/pbmc_silhouette_scores.csv', index_col=[0]) # cluster resolution community silhouette scores
 
 sankey_fig, sankey_dict = CellLayers.build_sankey(pbmc_exp,
                                  pbmc_meta,
@@ -73,8 +73,8 @@ sankey_fig.show()
 To recreate **Figure 1B**, please open CellLayers/Notebooks/PBMC_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
 ```Python
-pbmc_enrichment = pd.read_csv('../Data/PBMC/pbmc_enrichment.csv', index_col=[0]) # geneset, cluster resolution communities, and combined score
-pbmc_top_genes = pd.read_csv('../Data/PBMC/pbmc_top_genes.csv', index_col=[0]) # cluster resolution communities and top genes
+pbmc_enrichment = pd.read_csv('CellLayers/Data/PBMC/pbmc_enrichment.csv', index_col=[0]) # geneset, cluster resolution communities, and combined score
+pbmc_top_genes = pd.read_csv('CellLayers/Data/PBMC/pbmc_top_genes.csv', index_col=[0]) # cluster resolution communities and top genes
 
 # Create a list of your gene set(s) of interest
 geneset_oi = ['antigen processing and presentation of exogenous peptide antigen via MHC class II (GO:0019886)',
@@ -97,7 +97,16 @@ To recreate **Figure 1C**, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb 
 
 **Fig. 1 C** iPSC-derived cardiomyocyte multi resolution analysisfrom 0.1 to 0.5. Edges are painted by coexpression of ​TNNT2 ​(red), ​COL1A1 ​(green), andNR2F2 ​(blue). Nodes are painted by Silhouette score. Arrows on the Ternary plot indicate thedirection of the co-expression scale for each edge in the Sankey chart.
   
-## Tutorial: Setup CellLayers input data
+## Tutorial: Generate input data using SetupCellLayers
+    
+```R
+library(enrichR)
+library(Seurat)
+library(SetupCellLayers)
+sobj <- readRDS('../Data/PBMC/pbmc3k_CellLayers.rds')
+
+
+```
     
 ## Documentation
 Please consider citing Cell Layers if you used the application or code snippets for your analysis.
