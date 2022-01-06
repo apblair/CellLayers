@@ -175,7 +175,6 @@ class MultiResolutionAnalysis:
                 dec_percentile = [x/total_sum for x in self.exp_df.loc[cell_ids][genes].sum().tolist()]
                 self.sankey_dict['tri_coexp_dict'][tuple(genes)].append(dec_percentile)
                 self.sankey_dict['tri_coexp_color'][tuple(genes)].append(matplotlib.colors.to_hex(dec_percentile))
-                
             else:
                 pass
     
@@ -184,7 +183,7 @@ class MultiResolutionAnalysis:
         for cluster_data in self.sankey_dict['data'][['source_res', 'source_cluster', 'target_res', 'target_cluster']].values:
             cell_ids = self.meta_df[(self.meta_df[cluster_data[0]]==cluster_data[1]) & (self.meta_df[cluster_data[2]]==cluster_data[3])].index.tolist()
             self._avg_expression(cell_ids)
-#             self._tri_coexpression(cell_ids)
+            self._tri_coexpression(cell_ids)
         self._create_expression_hex_color()
     
     def _create_node_data(self):
