@@ -89,7 +89,7 @@ enrichment_sankey_fig, enrichment_sankey_dict = CellLayers.build_enrichment_sank
 enrichment_sankey_fig.show()
 ```
     
-**Fig. 1 B** Nodes painted byenrichR GO 2018 Biological Process gene set scores for GO:0002480. The node hovertemplate provides users cluster performance metrics (modularity and silhouette scores), GOterm title, enrichR gene set score, and the top 5 differentially expressed genes. Edges arecolored by NK marker gene _CD8A_.
+**Fig. 1 B** Nodes painted byenrichR GO 2018 Biological Process gene set scores for GO:0002480. The node hovertemplate provides users cluster performance metrics (modularity and silhouette scores), GO term, enrichR gene set score, and the top 5 differentially expressed genes. Edges are colored by NK marker gene _CD8A_.
     
 ---
     
