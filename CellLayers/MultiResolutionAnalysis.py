@@ -183,6 +183,7 @@ class MultiResolutionAnalysis:
         for cluster_data in self.sankey_dict['data'][['source_res', 'source_cluster', 'target_res', 'target_cluster']].values:
             cell_ids = self.meta_df[(self.meta_df[cluster_data[0]]==cluster_data[1]) & (self.meta_df[cluster_data[2]]==cluster_data[3])].index.tolist()
             self._avg_expression(cell_ids)
+            # TODO: Add coexpression check
             self._tri_coexpression(cell_ids)
         self._create_expression_hex_color()
     
