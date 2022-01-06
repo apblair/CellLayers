@@ -46,7 +46,7 @@ $ unzip PBMC_exp.csv.zip
 ```
 ---
 
-To recreate **Figure 1A**, please open CellLayers/Notebooks/PBCM_Tutorial.ipynb and run the following cell:
+To recreate **Figure 1A**, please open [PBCM_Tutorial.ipynb](https://github.com/apblair/CellLayers/blob/master/Notebooks/PBMC_Tutorial.ipynb) and run the following cell:
 
 ```python
 import CellLayers
