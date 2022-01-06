@@ -4,6 +4,10 @@
 #' @param sobj
 #' @param res_search
 #' @param output_path
+#' @import enrichR
+#' @import Seurat
+#' @import dplyr
+#' @import tidyr
 #' @return 
 #' @export
 compute_enrichment <- function(dbs, sobj, res_search, output_path){
@@ -39,6 +43,10 @@ compute_enrichment <- function(dbs, sobj, res_search, output_path){
 #' Default is the top 5 genes
 #'
 #' @param markers_list
+#' @import enrichR
+#' @import Seurat
+#' @import dplyr
+#' @import tidyr
 #' @return 
 #' @export
 select_geneset_markers <- function(markers_list){
