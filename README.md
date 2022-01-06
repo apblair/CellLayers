@@ -54,14 +54,14 @@ import pandas as pd
 pbmc_exp = pd.read_csv('Data/PBMC_exp.csv', index_col=[0]) # cell by gene expression matrix
 pbmc_meta = pd.read_csv('Data/PBMC_meta.csv', index_col=[0]) # cell by resolution matrix
 pbmc_modularity = pd.read_csv('Data/pbmc_modularity.csv', index_col=[0])
-pbmc_sil = pd.read_csv('Data/pbmc_silhouette_scores.csv', index_col=[0])
+pbmc_silhouette_scores = pd.read_csv('Data/pbmc_silhouette_scores.csv', index_col=[0])
 
-sankey = CellLayers.build_sankey(exp_df,
-                                 meta_df,
-                                 modularity=mod_df,
-                                 silhouette=sil_df,
+sankey_fig, sankey_dict = CellLayers.build_sankey(pbmc_exp,
+                                 pbmc_meta,
+                                 modularity=pbmc_modularity,
+                                 silhouette=pbmc_silhouette_scores,
                                  genes=['CD3E','FCER1A'])
-sankey.show()
+sankey_fig.show()
 ```
 <image src="Images/example.png">
     
