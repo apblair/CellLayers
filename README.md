@@ -3,7 +3,7 @@
 Cell Layers is an interactive Sankey tool for the quantitative investigation of gene expression, coexpression, biological processes, and cluster integrity across clustering resolutions.
 
 ## Installation
-The CellLayers Python module can be installed via pip after cloning the repository. Please note, the Python module requires the cluster metric and enrichment data to be generated independently or via our R library SetupCellLayers. 
+The **CellLayers** Python module can be installed via pip after cloning the repository. Please note, the Python module requires the cluster metric and enrichment data to be generated independently or via our R library **SetupCellLayers**. 
 
 ```bash
 $ git clone git@github.com:apblair/CellLayers.git
@@ -11,7 +11,7 @@ $ cd CellLayers
 $ pip install .
 ```
 
-The SetupCellLayers R library can be installed via devtools after cloning the repository.
+The **SetupCellLayers** R library can be installed via devtools after cloning the repository.
 ```R
 > library(devtools)
 > setwd("CellLayers")
@@ -19,7 +19,7 @@ The SetupCellLayers R library can be installed via devtools after cloning the re
 > library(SetupCellLayers)
 ```
 
-We have also provided a Docker image, which encapsulates the environment to run CellLayers. 
+We have also provided a Docker image, which encapsulates the environment to run **CellLayers** and **SetupCellLayers**. 
 ```bash
 $ docker pull bruneaulab/cell-layers:0.1
 ```
@@ -45,7 +45,7 @@ $ cd CellLayers/Data
 $ unzip PBMC_exp.csv.zip 
 ```
 
-To recreate Figure 1A, please open CellLayers/Notebooks/PBCM_Tutorial.ipynb in a Jupyter environment and run the following cell:
+To recreate **Figure 1A**, please open CellLayers/Notebooks/PBCM_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
 ```python
 import CellLayers
@@ -67,7 +67,7 @@ sankey_fig.show()
     
 **Fig. 1 (A)** PBMC mulit-resolution analysis from 0.1 to 0.5. Edges are painted by CD3E, which is a marker gene for CD8+ T, Memory CD4 T, and Naive CD4 T cells. Nodes are painted by Silhouette score. The lower Sihouette values indicate samples are near the decision boundary of neighboring clusters.
     
-To recreate Figure 1B, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyter environment and run the following cell:
+To recreate **Figure 1B**, please open CellLayers/Notebooks/TBX5_Tutorial.ipynb in a Jupyter environment and run the following cell:
 
 ```Python
 pbmc_enrichment = pd.read_csv('../Data/PBMC/pbmc_enrichment.csv', index_col=[0]) # geneset, cluster resolution communities, and combined score
