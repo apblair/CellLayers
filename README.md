@@ -132,6 +132,8 @@ bioRxiv 2020.11.29.400614; doi: https://doi.org/10.1101/2020.11.29.400614
 ## Authors Contributions
 A.P.B. conceived and initiated the project. R.H assisted in analysis. B.G.B., P.F.P, and I.S.K. supervised A.P.B. I.S.K. provided datasets. K.S.P. advised. All authors commented on the manuscript.
 
+* these corresponding authors contributed equally
+
 ## Acknowledgments
 We thank the Cytoscape and scNetViz developers Alex Pico and Scooter Morris for their input on Plotly, Dan Carlin for his input on multi-resolution analysis, members of the CIRM Heart of Cells group, Gladstone Bioinformatics core, and Bruneau lab for discussions and comments. 
 
