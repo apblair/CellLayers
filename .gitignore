@@ -7,6 +7,8 @@ CellLayers/.ipynb_checkpoints/
 CellLayers/__pycache__
 Data/PBMC/PBMC_exp.csv
 Data/TBX5/TBX5_exp.csv
+Data/TBX5/TBX5_sample_exp.csv
+Data/TBX5/TBX5_sample_meta.csv
 Data/__MACOSX/*
 Data/TBX5/TBX5_exp_*.mtx
 CellLayers.egg-info/*
