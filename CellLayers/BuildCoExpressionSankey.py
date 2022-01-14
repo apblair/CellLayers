@@ -48,7 +48,8 @@ class BuildCoExpressionSankey:
     
     def _create_sankey(self, fig):
         fig.add_trace(go.Sankey(
-            node=go.sankey.Node(label= self.sankey_dict['node_labels']),
+            node=go.sankey.Node(label= self.sankey_dict['node_labels'],
+                                color = self.sankey_dict['node_data']['silhoutte_hex']),
             link=go.sankey.Link(source = self.sankey_dict['data']['source'],
                                 target = self.sankey_dict['data']['target'],
                                 color = [matplotlib.colors.to_hex(x) for x in self.sankey_dict['tri_coexp_color'][self.starter_tri_coexpressed_genes]],
