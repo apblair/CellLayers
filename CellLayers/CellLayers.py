@@ -3,48 +3,46 @@ from .BuildEnrichmentSankey import *
 from .BuildCoExpressionSankey import *
 
 def build_sankey(
-    exp_df,
-    meta_df,
+    exp_df, 
+    meta_df, 
+    genes,
+    coexpressed_genes,
+    exp_color,
     modularity=None,
     silhouette=None,
-    genes=None, 
-    exp_color=None,
-    coexpressed_genes=None, 
-    coexp_color=None,
-    tri_coexpressed_genes=None,
-    edge_cutoff=None,
     node_color='#F7ED32'):
     """
-    Return a Cell Layers Plotly object.
-    
-    Keyword arguments:
+    Parameters
+    ----------
+        exp_df: DataFrame (Pandas)
+            Cell barcode x gene dataframe
+        meta_df: DataFrame (Pandas)
+            Cell barcode x metadata attributes
+        genes: List[str]
+            A list of strings that are gene names. The gene names must be present in exp_df.
+        coexpressed_genes: List[List[str]] (optional)
+            Nested lists of strings of length three that are gene names. The gene names must be present in exp_df.
+        exp_color: str
+            A string that is a matplotlib colormap continuous color.
+        modularity: DataFrame (Pandas) (optional)
+            Cluster resolution value by modularity score
+        silhouette: DataFrame (Pandas) (optional)
+            Cluster resolution and community assignment by silhouette score
+        node_color: str
 
-    - exp_df (Pandas DataFrame; required): Cell x gene expression matrix
-    - meta_df (Pandas DataFrame; required):
-    - modularity (Pandas DataFrame; optional):
-    - silhouette (Pandas DataFrame; optional):
-    - genes (list; optional):
-    - exp_color (string; optional):
-    - coexpressed_genes (list; optional):
-    - coexp_color (list; optional):
-    - tri_coexpressed_genes (list; optional):
-    - edge_cutoff (int; optional):
-    - node_color (string; default '#F7ED32'):
     """
-    
-    while genes == None:
-        print('Please add gene(s) for Cell Layers.')
-        break
-    else:
-        sankey_dict = MultiResolutionAnalysis(exp_df, meta_df,
-                                 modularity,
-                                 silhouette,
-                                 genes, exp_color,
-                                 coexpressed_genes, coexp_color,
-                                 tri_coexpressed_genes,
-                                 edge_cutoff).compute()
-        sankey_fig = BuildSankey(sankey_dict, node_color=node_color).run()
-        return sankey_fig, sankey_dict
+
+    cl = MultiResolutionAnalysis(
+        exp_df, 
+        meta_df, 
+        genes,
+        coexpressed_genes,
+        exp_color,
+        modularity,
+        silhouette)
+    cl.compute()
+    sankey_fig = BuildSankey(cl.sankey_dict, node_color=node_color).run()
+    return sankey_fig, cl.sankey_dict
 
 def build_enrichment_sankey(sankey_dict, 
                             geneset_oi,
@@ -52,9 +50,9 @@ def build_enrichment_sankey(sankey_dict,
                             leading_edge, 
                             genes):
     """
-    Return a Cell Layers Plotly object.
     
-    Keyword arguments:
+    Parameters
+    ----------
     """
     sankey_dict = EnrichmentSankey(sankey_dict,
                                geneset_oi,
@@ -64,7 +62,7 @@ def build_enrichment_sankey(sankey_dict,
                                               genes,
                                               geneset_oi,
                                               enrichment_df).run()
-    return enrichment_fig, sankey_dict
+    return enrichment_fig, enrichment_sankey_dict
 
 def build_coexpression_sankey(sankey_dict):
     """
