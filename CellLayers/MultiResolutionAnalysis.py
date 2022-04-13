@@ -27,11 +27,11 @@ class MultiResolutionAnalysis:
         meta_df: DataFrame (Pandas)
             Cell barcode x metadata attributes
         genes: List[str]
-            A list of strings that are gene names. The gene names must be present in exp_df.
+            List of strings that are gene names. The gene names must be present in exp_df.
         coexpressed_genes: List[List[str]] (optional)
             Nested lists of strings of length three that are gene names. The gene names must be present in exp_df.
         exp_color: str
-            A string that is a matplotlib colormap continuous color.
+            String that is a matplotlib colormap continuous color.
         modularity: DataFrame (Pandas) (optional)
             Cluster resolution value by modularity score
         silhouette: DataFrame (Pandas) (optional)
@@ -56,14 +56,16 @@ class MultiResolutionAnalysis:
 
         self._exp_df = exp_df
         self._meta_df = meta_df.astype(str)
-        self.build_sankey_dict(genes, exp_color, silhouette, modularity, coexpressed_genes)
+        self._build_sankey_dict(genes, exp_color, silhouette, modularity, coexpressed_genes)
+
+        #TODO: Add node hovertemplate text
       
-    def build_sankey_dict(self, genes, exp_color, silhouette, modularity, coexpressed_genes):
+    def _build_sankey_dict(self, genes, exp_color, silhouette, modularity, coexpressed_genes):
         """
         Parameters
         ----------
         genes: List[str]
-            A list of strings that are gene names. The gene names must be present in exp_df.
+            List of strings that are gene names. The gene names must be present in exp_df.
         coexpressed_genes: List[List[str]] (optional)
             Nested lists of strings of length three that are gene names. The gene names must be present in exp_df.
         """
@@ -77,9 +79,9 @@ class MultiResolutionAnalysis:
                     'genes' : genes,
                     'exp_dict' : {gene:[] for gene in genes},
                     'exp_color' : exp_color,
-                    'exp_colorbar':{},
-                    'coexp_genes':None,
-                    'resolutions':[data for data in list(self._meta_df) if data.split('.')[0] == 'res']}
+                    'exp_colorbar' : {},
+                    'coexp_genes' : None,
+                    'resolutions' : [data for data in list(self._meta_df) if data.split('.')[0] == 'res']}
 
         self._wrangle_node_data()
         self._check_args(coexpressed_genes, silhouette, modularity)
@@ -110,8 +112,7 @@ class MultiResolutionAnalysis:
         if silhouette is not None:
             self.sankey_dict['silhouette'] = {data[0]:data[1] for data in silhouette.values}
             self.sankey_dict['node_data']['silhoutte_score'] = [round(self.sankey_dict['silhouette'][x],2) for x in self.sankey_dict['node_data']['node_labels']]
-            self._normalize_silhouette()
-            self._create_silhouette()
+            self._create_silhouette_colorbar()
             
         if modularity is not None:
             self.sankey_dict['modularity'] = {data[0]:data[1] for data in modularity.values}
@@ -128,18 +129,25 @@ class MultiResolutionAnalysis:
             self.sankey_dict['coexp_dict'] = {tuple(coexp_set): [] for coexp_set in coexpressed_genes}
             self.sankey_dict['coexp_color'] = {tuple(coexp_set): [] for coexp_set in coexpressed_genes}
     
-    def _color_mapper(self, vmin, vmax, values_to_map, cmap):
+    def _color_mapper(self, vmin, vmax, values_to_map, cmap)-> tuple[list[str], 'ScalarMappable']:
         """
+        Map a list of values to a hex color codes
+
         Parameters
         ----------
-        vmin:
-        vmax:
-        values_to_map:
+        vmin: float
+            minimum value for normalization
+        vmax: float
+            max value for normalization
+        values_to_map: list
+            list of floats for normalization
 
         Returns
         -------
-        hex_list:
-        mapper:
+        hex_list: list[str]
+            List of strings that are color hex codes
+        mapper: class object
+            Class object from matplotlib.cm ScalarMappable
         """
         norm = matplotlib.colors.Normalize(vmin=vmin, vmax=vmax, clip=True)
         mapper = cm.ScalarMappable(norm=norm, cmap=cmap)
@@ -149,6 +157,7 @@ class MultiResolutionAnalysis:
 
     def _normalize_silhouette(self):
         """Normalize silhouette score within each cluster resolution"""
+        #TODO: Cleanup method
         node_list = []
         for items in self.sankey_dict['resolutions']:
             node_temp = self.sankey_dict['node_data'][self.sankey_dict['node_data']['res'] == items].copy()
@@ -158,13 +167,16 @@ class MultiResolutionAnalysis:
         norm_sil_df = pd.concat(node_list)
         self.sankey_dict['node_data']['silhoutte_norm_by_res'] = norm_sil_df['silhoutte_norm_by_res']
     
-    def _create_silhouette(self):
-        """ """
-        silhouette_list = [x/10.0 for x in list(range(-10,11,1))]
+    def _create_silhouette_colorbar(self):
+        """Create Silhouette color bar"""
+        self._normalize_silhouette()
+        silhouette_list = [x/10.0 for x in list(range(-10,11,1))] # define silhouette score range
         silhouette_hex_list, mapper = self._color_mapper(min(silhouette_list), max(silhouette_list), self.sankey_dict['node_data']['silhoutte_norm_by_res'], 'RdYlBu_r')
         self.sankey_dict['node_data']['silhoutte_hex'] = silhouette_hex_list # update to modularity
         self.sankey_dict['silhouette_list'] = silhouette_list
         self.sankey_dict['silhouette_mapper'] = mapper
+        self.sankey_dict['silhouette_colorbar'] = [mcolors.to_hex(self.sankey_dict['silhouette_mapper'].to_rgba(x)) 
+                                         for x in self.sankey_dict['silhouette_list']]
 
     def _count_flow_by_flow(self):
         """"Count the number of cells flowing from resolution (n) community (i) to resolution (m) community (j)"""
@@ -185,54 +197,27 @@ class MultiResolutionAnalysis:
         
         self.sankey_dict['data']['target_res'] = np.array([x.split('_') for x in self.sankey_dict['data']['target_label']])[:,0].tolist()
         self.sankey_dict['data']['target_cluster'] = np.array([x.split('_') for x in self.sankey_dict['data']['target_label']])[:,1].tolist()
-
-        
-    def _follow_the_flow(self, seq, n=2):
-        """
-        Yield a sliding window of width n over an iterable 
-        
-        Parameters
-        ----------
-        seq: list
-            List of strings to be sliced
-        n: int, default=2
-            Window size slice
-        
-        Yields
-        -------
-        result: list
-            List of sliced strings of length n
-        """
-        it = iter(seq)
-        result = tuple(islice(it, n))
-        if len(result) == n:
-            yield result
-        for elem in it:
-            result = result[1:] + (elem,)
-            yield result 
     
     def _create_expression_colorbar(self):
-        """
-        Create a gene expression bar
-        """
+        """Create a gene expression bar"""
         # Create a hex code color range for a gene's expression in the sankey network streams
         for gene, expression in self.sankey_dict['exp_dict'].items():
             exp_hex_list, mapper = self._color_mapper(min(expression), max(expression), expression, 'Purples')
             self.sankey_dict['data'][gene+'_hex'] = exp_hex_list
-            self._create_expression_hex_color(gene, expression, exp_hex_list)
+            self._sort_hex_colorbar(gene, expression, exp_hex_list)
     
-    def _create_expression_hex_color(self, gene, expression, hex_list):
+    def _sort_hex_colorbar(self, gene, expression, hex_list):
         """
-        Create a gene expression bar
+        Sort the hex color code by gene expression in ascending order
 
         Parameters
         ----------
         gene: str
-            A string that is a gene name
+            String that is a gene name
         expression: list
-            A list of floats for each cell's gene expression value in the sankey stream
+            List of floats for each cell's gene expression value in the sankey stream
         hex_list: list
-            A list of strings that are hex codes
+            List of strings that are hex codes
         """
         gene_color_bar_df = pd.DataFrame(self.sankey_dict['exp_dict'][gene])
         gene_color_bar_df['hex'] = hex_list
@@ -241,17 +226,18 @@ class MultiResolutionAnalysis:
             
     def _coexpression(self, cell_ids):
         """
-        Compute the co-expression of user defined genes
+        Compute the co-expression of user defined genes for each batch of cell ids
 
         Parameters
         ----------
         cell_ids : list
-            A list of strings that are cell barcodes
+            List of strings that are cell barcodes
         """
+        #TODO: Check code
         for genes in self.sankey_dict['coexp_genes']:
-            total_sum = sum(self._exp_df.loc[cell_ids][genes].sum().tolist())
-            if total_sum > 0:
-                dec_percentile = [x/total_sum for x in self._exp_df.loc[cell_ids][genes].sum().tolist()]
+            gene_sums = self._exp_df.loc[cell_ids][genes].sum().tolist()
+            if sum(gene_sums) > 0:
+                dec_percentile = [x/sum(gene_sums) for x in gene_sums]
                 self.sankey_dict['coexp_dict'][tuple(genes)].append(dec_percentile)
                 self.sankey_dict['coexp_color'][tuple(genes)].append(matplotlib.colors.to_hex(dec_percentile))
             else:

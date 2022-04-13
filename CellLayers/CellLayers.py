@@ -1,4 +1,4 @@
-from .BuildSankey import *
+from .Sankey import *
 from .BuildEnrichmentSankey import *
 from .BuildCoExpressionSankey import *
 
@@ -12,6 +12,8 @@ def build_sankey(
     silhouette=None,
     node_color='#F7ED32'):
     """
+    Construct a MultiResolutionAnalysis class object with user defined parameters and build a Sankey plotly graph object.
+
     Parameters
     ----------
         exp_df: DataFrame (Pandas)
@@ -29,10 +31,8 @@ def build_sankey(
         silhouette: DataFrame (Pandas) (optional)
             Cluster resolution and community assignment by silhouette score
         node_color: str
-
     """
-
-    cl = MultiResolutionAnalysis(
+    mra = MultiResolutionAnalysis(
         exp_df, 
         meta_df, 
         genes,
@@ -40,9 +40,9 @@ def build_sankey(
         exp_color,
         modularity,
         silhouette)
-    cl.compute()
-    sankey_fig = BuildSankey(cl.sankey_dict, node_color=node_color).run()
-    return sankey_fig, cl.sankey_dict
+    mra.compute()
+    sankey_fig = Sankey(mra.sankey_dict, node_color=node_color).build()
+    return sankey_fig, mra.sankey_dict
 
 def build_enrichment_sankey(sankey_dict, 
                             geneset_oi,
@@ -66,6 +66,8 @@ def build_enrichment_sankey(sankey_dict,
 
 def build_coexpression_sankey(sankey_dict):
     """
+    Parameters
+    ----------
     """
     coexpression_sankey_fig = BuildCoExpressionSankey(sankey_dict)
     return coexpression_sankey_fig
