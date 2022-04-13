@@ -42,6 +42,10 @@ class MultiResolutionAnalysis:
     sankey_dict: dict
         Dictionary containing the multi-resolution cluster analysis for building a Sankey Network
     """
+    #TODO: Add node hovertemplate text
+    #TODO: Cleanup normalize silhouette
+    #TODO: Add class parameters for silhouette and expression coloring
+
     def __init__(self, 
                  exp_df, 
                  meta_df, 
@@ -57,8 +61,6 @@ class MultiResolutionAnalysis:
         self._exp_df = exp_df
         self._meta_df = meta_df.astype(str)
         self._build_sankey_dict(genes, exp_color, silhouette, modularity, coexpressed_genes)
-
-        #TODO: Add node hovertemplate text
       
     def _build_sankey_dict(self, genes, exp_color, silhouette, modularity, coexpressed_genes):
         """
@@ -68,6 +70,12 @@ class MultiResolutionAnalysis:
         ----------
         genes: List[str]
             List of strings that are gene names. The gene names must be present in exp_df.
+        exp_color: str
+            String that is a matplotlib colormap continuous color.
+        silhouette: DataFrame (Pandas) (optional)
+            Cluster resolution and community assignment by silhouette score
+        modularity: DataFrame (Pandas) (optional)
+            Cluster resolution value by modularity score
         coexpressed_genes: List[List[str]] (optional)
             Nested lists of strings of length three that are gene names. The gene names must be present in exp_df.
         """
@@ -105,10 +113,12 @@ class MultiResolutionAnalysis:
 
         Parameters
         ----------
-        modularity: DataFrame (Pandas) (optional)
-            Cluster resolution value by modularity score
+        coexpressed_genes: List[List[str]] (optional)
+            Nested lists of strings of length three that are gene names. The gene names must be present in exp_df.
         silhouette: DataFrame (Pandas) (optional)
             Cluster resolution and community assignment by silhouette score
+        modularity: DataFrame (Pandas) (optional)
+            Cluster resolution value by modularity score
         """
 
         if silhouette is not None:
@@ -159,7 +169,6 @@ class MultiResolutionAnalysis:
 
     def _normalize_silhouette(self):
         """Normalize silhouette score within each cluster resolution"""
-        #TODO: Cleanup method
         node_list = []
         for items in self.sankey_dict['resolutions']:
             node_temp = self.sankey_dict['node_data'][self.sankey_dict['node_data']['res'] == items].copy()

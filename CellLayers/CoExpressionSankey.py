@@ -5,24 +5,22 @@ import plotly.graph_objects as go
 
 import matplotlib
 import matplotlib.colors as mcolors
-
-
 class CoExpressionSankey:
     """
-    Class for building a co-expression Sankey network
+    Class for building a co-expression Sankey network for multi-resolution co-expression enrichment analysis  
 
     Parameters
     ----------
     sankey_dict: dict
-        Dictionary containing the multi-resolution cluster analysis for building a Sankey Network 
+        Dictionary containing the multi-resolution cluster analysis for building a Sankey network 
 
     Attributes
     ----------
     sankey_dict: dict
-        Dictionary containing the multi-resolution cluster analysis for building a Sankey Network
+        Dictionary containing the multi-resolution cluster analysis for building a Sankey network
     """
 
-    #TODO: Update hovertemplate
+    #TODO: Update hovertemplate; currently hardcoded
     
     def __init__(self, sankey_dict):
         self.sankey_dict = sankey_dict

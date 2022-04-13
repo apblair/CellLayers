@@ -2,17 +2,19 @@ from .MultiResolutionAnalysis import *
 
 class Sankey:
     """
+    Class for building a Sankey for multi-resolution single cell analysis  
+
     Parameters
     ----------
     sankey_dict: dict (required)
-        Dictionary containing the multi-resolution cluster analysis for building a Sankey Network
+        Dictionary containing the multi-resolution cluster analysis for building a Sankey network
     node_color: str (optional)
         String to define node color
 
     Attributes
     ----------
     sankey_dict: dict
-        Dictionary containing the multi-resolution cluster analysis for building a Sankey Network
+        Dictionary containing the multi-resolution cluster analysis for building a Sankey network
     """
     #TODO: Update node_color accessibility to be in self.sankey_dict
     #TODO: Create a method in MultiResolutionAnalysis for coloring nodes
@@ -159,7 +161,7 @@ class Sankey:
 
         
     def build(self):
-        """Build the Sankey Network"""
+        """Build the Sankey network"""
         fig = self._create_sankey()
         self._add_functionality(fig)       
         return fig
