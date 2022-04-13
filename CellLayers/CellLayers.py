@@ -1,6 +1,6 @@
 from .Sankey import *
 from .BuildEnrichmentSankey import *
-from .BuildCoExpressionSankey import *
+from .CoExpressionSankey import *
 
 def build_sankey(
     exp_df, 
@@ -69,5 +69,5 @@ def build_coexpression_sankey(sankey_dict):
     Parameters
     ----------
     """
-    coexpression_sankey_fig = BuildCoExpressionSankey(sankey_dict)
+    coexpression_sankey_fig = CoExpressionSankey(sankey_dict).build()
     return coexpression_sankey_fig

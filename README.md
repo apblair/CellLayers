@@ -1,4 +1,4 @@
-# Cell Layers: Uncovering clustering structure and knowledge in unsupervised single-cell transcriptomic analysis
+# Cell Layers: Uncovering clustering structure in unsupervised single-cell transcriptomic analysis
 
 Cell Layers is an interactive Sankey tool for the quantitative investigation of gene expression, coexpression, biological processes, and cluster integrity across clustering resolutions.
 
@@ -18,24 +18,6 @@ The **SetupCellLayers** R library can be installed via devtools after cloning th
 > devtools::install_github("apblair/CellLayers/SetupCellLayers")
 > library(SetupCellLayers)
 ```
-
-We have also provided a Docker image, which encapsulates the environment to run **CellLayers** and **SetupCellLayers**. 
-```bash
-$ docker pull bruneaulab/cell-layers:0.1
-```
-
-## Running the Container
-
-```bash
-$ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work bruneaulab/cell-layers:0.1
-```
-
-For HPC clusters that support Linux containers, the Docker container can be pulled and built as a Singularity container. After building the Singularity container, an interactive session can be run with these commands:
-```bash
-$ singularity build cell-layers.sif docker://bruneaulab/cell-layers:0.1
-$ singularity exec cell-layers.sif start.sh jupyter lab --port=9595
-```
-
 ## Tutorial: Reproduce publication figure
 
 To begin the tutorial, please unzip the tutorial's expression data.

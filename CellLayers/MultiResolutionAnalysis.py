@@ -22,25 +22,25 @@ class MultiResolutionAnalysis:
 
     Parameters
     ----------
-        exp_df: DataFrame (Pandas)
-            Cell barcode x gene dataframe
-        meta_df: DataFrame (Pandas)
-            Cell barcode x metadata attributes
-        genes: List[str]
-            List of strings that are gene names. The gene names must be present in exp_df.
-        coexpressed_genes: List[List[str]] (optional)
-            Nested lists of strings of length three that are gene names. The gene names must be present in exp_df.
-        exp_color: str
-            String that is a matplotlib colormap continuous color.
-        modularity: DataFrame (Pandas) (optional)
-            Cluster resolution value by modularity score
-        silhouette: DataFrame (Pandas) (optional)
-            Cluster resolution and community assignment by silhouette score
+    exp_df: DataFrame (Pandas)
+        Cell barcode x gene dataframe
+    meta_df: DataFrame (Pandas)
+        Cell barcode x metadata attributes
+    genes: List[str]
+        List of strings that are gene names. The gene names must be present in exp_df.
+    coexpressed_genes: List[List[str]] (optional)
+        Nested lists of strings of length three that are gene names. The gene names must be present in exp_df.
+    exp_color: str
+        String that is a matplotlib colormap continuous color.
+    modularity: DataFrame (Pandas) (optional)
+        Cluster resolution value by modularity score
+    silhouette: DataFrame (Pandas) (optional)
+        Cluster resolution and community assignment by silhouette score
 
     Attributes
     ----------
-        sankey_dict: dict
-            Dictionary containing the multi-resolution cluster analysis for building a Sankey Network
+    sankey_dict: dict
+        Dictionary containing the multi-resolution cluster analysis for building a Sankey Network
     """
     def __init__(self, 
                  exp_df, 
@@ -62,6 +62,8 @@ class MultiResolutionAnalysis:
       
     def _build_sankey_dict(self, genes, exp_color, silhouette, modularity, coexpressed_genes):
         """
+        Build a sankey dictionary for the multi-resolution cluster analysis
+
         Parameters
         ----------
         genes: List[str]

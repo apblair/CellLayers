@@ -14,18 +14,18 @@ class Sankey:
     sankey_dict: dict
         Dictionary containing the multi-resolution cluster analysis for building a Sankey Network
     """
+    #TODO: Update node_color accessibility to be in self.sankey_dict
+    #TODO: Create a method in MultiResolutionAnalysis for coloring nodes
+    #TODO: Create a method for accessing additional meta attributes
+
     def __init__(self, sankey_dict, node_color='#F7ED32'):
         self.sankey_dict = sankey_dict
         self._starter_gene = self.sankey_dict['genes'][0]
         self._node_color = node_color
 
-        #TODO: Update node_color accessibility to be in self.sankey_dict
-        #TODO: Create a method in MultiResolutionAnalysis for coloring nodes
-        #TODO: Create a method for accessing additional meta attributes
-
-    def _create_sankey_obj(self):
+    def _create_sankey(self) -> 'plotly.graph_objs._figure.Figure':
         """Create a Sankey Plotly graph object"""
-        return go.Figure(data=[dict(type='sankey', orientation='h', 
+        fig = go.Figure(data=[dict(type='sankey', orientation='h', 
                 node = dict(pad = 10, thickness=10,
                             label=self.sankey_dict['node_data']['node_labels'],
                             # customdata = self.sankey_dict['node_data']['new_label'],
@@ -36,6 +36,14 @@ class Sankey:
                             target = self.sankey_dict['data']['target'],
                             color =  self.sankey_dict['data'][self._starter_gene+'_hex'],
                             value = self.sankey_dict['data']['value']))])
+        fig.update_xaxes(showticklabels=False) 
+        fig.update_yaxes(showticklabels=False)
+        fig['layout']['showlegend'] = False
+        fig['layout']['xaxis']['showgrid'] = False
+        fig['layout']['yaxis']['showgrid'] = False
+        fig.update_layout(xaxis_zeroline=False, yaxis_zeroline=False)
+        fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(0, 0, 0, 0)'})
+        return fig
     
     def _create_gene_expression(self, fig) -> list:
         """
@@ -110,7 +118,7 @@ class Sankey:
     
     def _add_functionality(self, fig):
         """
-        Add drop down menus for selecting genes and layout configurations
+        Add drop down menus for selecting genes and configuring the layout
 
         Parameters
         ----------
@@ -152,16 +160,6 @@ class Sankey:
         
     def build(self):
         """Build the Sankey Network"""
-
-        fig = self._create_sankey_obj()
-        self._add_functionality(fig)
-        
-        # Update figure layout
-        fig.update_xaxes(showticklabels=False) 
-        fig.update_yaxes(showticklabels=False)
-        fig['layout']['showlegend'] = False
-        fig['layout']['xaxis']['showgrid'] = False
-        fig['layout']['yaxis']['showgrid'] = False
-        fig.update_layout(xaxis_zeroline=False, yaxis_zeroline=False)
-        fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(0, 0, 0, 0)'})
+        fig = self._create_sankey()
+        self._add_functionality(fig)       
         return fig
