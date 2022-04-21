@@ -246,7 +246,7 @@ class MultiResolutionAnalysis:
         """
         #TODO: Check code
         for genes in self.sankey_dict['coexp_genes']:
-            gene_sums = self._exp_df.loc[cell_ids][genes].sum().tolist()
+            gene_sums = self._exp_df.loc[cell_ids, genes].sum(axis = 1).tolist()
             if sum(gene_sums) > 0:
                 dec_percentile = [x/sum(gene_sums) for x in gene_sums]
                 self.sankey_dict['coexp_dict'][tuple(genes)].append(dec_percentile)
