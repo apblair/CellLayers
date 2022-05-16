@@ -7,7 +7,7 @@ class EnrichmentAnalysis:
     Parameters
     ----------
     sankey_dict: dict
-        Dictionary containing the multi-resolution cluster analysis for building a Sankey Network
+        Dictionary containing the multi-resolution cluster analysis for building a Sankey network
     geneset_oi: list
         List of strings that are the genesets of interest
     enrichment_df: DataFrame (Pandas)
@@ -20,7 +20,7 @@ class EnrichmentAnalysis:
     Attributes
     ----------
     sankey_dict: dict
-        Dictionary containing the multi-resolution cluster analysis for building a Sankey Network
+        Dictionary containing the multi-resolution cluster analysis for building a Sankey network
     """
     #TODO: Add test
 
