@@ -1,2 +1,4 @@
 import pandas as pd
-import CellLayers
+
+def test_import():
+    import CellLayers

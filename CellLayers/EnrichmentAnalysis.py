@@ -34,6 +34,7 @@ class EnrichmentAnalysis:
         self.sankey_dict = sankey_dict
         self._geneset_oi = geneset_oi
         self._enrichment_df = enrichment_df
+        self._top_genes = top_genes
         self._cmap = cmap
         
     def _create_enrichment_dict(self) -> dict:

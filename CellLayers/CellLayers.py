@@ -47,9 +47,9 @@ def build_sankey(
 
 def build_enrichment_sankey(sankey_dict, 
                             geneset_oi,
-                            enrichment_df, 
-                            leading_edge, 
                             genes,
+                            enrichment_df, 
+                            top_genes, 
                             cmap='YlGn'
                             ):
     """
@@ -68,11 +68,11 @@ def build_enrichment_sankey(sankey_dict,
     cmap: str (default YlGn)
         String denoting the coloring of the sankey links by the enrichment scores
     """
-    ea = EnrichmentAnalysis(sankey_dict,geneset_oi, enrichment_df,leading_edge, cmap)
+    ea = EnrichmentAnalysis(sankey_dict, geneset_oi, enrichment_df,top_genes, cmap)
     ea.compute()
     enrichment_fig, enrichment_sankey_dict = EnrichmentSankey(ea.sankey_dict,
-                                              genes,
                                               geneset_oi,
+                                              genes,
                                               enrichment_df).build()
     return enrichment_fig, enrichment_sankey_dict
 

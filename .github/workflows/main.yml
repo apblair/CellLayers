@@ -10,3 +10,5 @@ jobs:
     - name: Install dependencies
       run: |
         pip install .
+    - name: Run test
+      run: python -m pytest -v test/*

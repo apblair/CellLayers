@@ -1,10 +1,6 @@
 import collections
 import numpy as np
 import pandas as pd
-import scipy.io as sci
-from itertools import islice
-
-import seaborn as sns
 
 import matplotlib.colors
 import matplotlib.cm as cm
@@ -141,7 +137,7 @@ class MultiResolutionAnalysis:
             self.sankey_dict['coexp_dict'] = {tuple(coexp_set): [] for coexp_set in coexpressed_genes}
             self.sankey_dict['coexp_color'] = {tuple(coexp_set): [] for coexp_set in coexpressed_genes}
     
-    def _color_mapper(self, vmin, vmax, values_to_map, cmap)-> tuple[list[str], 'ScalarMappable']:
+    def _color_mapper(self, vmin, vmax, values_to_map, cmap):
         """
         Map a list of values to a hex color codes
 
@@ -246,9 +242,12 @@ class MultiResolutionAnalysis:
         """
         #TODO: Check code
         for genes in self.sankey_dict['coexp_genes']:
-            gene_sums = self._exp_df.loc[cell_ids, genes].sum(axis = 1).tolist()
-            if sum(gene_sums) > 0:
-                dec_percentile = [x/sum(gene_sums) for x in gene_sums]
+            # gene_sums = self._exp_df.loc[cell_ids, genes].sum(axis = 1).tolist()
+            gene_sum = sum(self._exp_df.loc[cell_ids][genes].sum().tolist())
+            # if sum(gene_sums) > 0:
+            if gene_sum > 0:
+                dec_percentile = [x/gene_sum for x in self._exp_df.loc[cell_ids][genes].sum().tolist()]
+                # dec_percentile = [x/sum(gene_sums) for x in gene_sums]
                 self.sankey_dict['coexp_dict'][tuple(genes)].append(dec_percentile)
                 self.sankey_dict['coexp_color'][tuple(genes)].append(matplotlib.colors.to_hex(dec_percentile))
             else:

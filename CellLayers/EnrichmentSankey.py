@@ -19,12 +19,11 @@ class EnrichmentSankey:
     """
     def __init__(self, 
                  sankey_dict,
-                 genes,
                  geneset_oi,
+                 genes,
                  enrichment_df
                 ):
         self.sankey_dict = sankey_dict
-        self.genes = genes
         self.starter_gene = genes[0]
         self.geneset_oi = geneset_oi
         self.starter_geneset = geneset_oi[-1]
@@ -106,20 +105,28 @@ class EnrichmentSankey:
         fig.update_layout(xaxis_zeroline=False, yaxis_zeroline=False)
         fig.update_layout(
             updatemenus=[
-                dict(y=-0.2,
+                dict(x=0, y=1.25,
                      buttons=[dict(label='Snap',method='restyle', args=['arrangement', 'snap']),
                               dict(label='Perpendicular', method='restyle',args=['arrangement', 'perpendicular']),
                               dict(label='Freeform', method='restyle',args=['arrangement', 'freeform']),
                               dict(label='Fixed', method='restyle',args=['arrangement', 'fixed'])]),
-                dict(y=0,
+                
+                dict(x=0.2, y=1.25,
+                      buttons=[dict(label='Light', method='relayout', args=['paper_bgcolor', 'white']),
+                               dict(label='Dark', method='relayout', args=['paper_bgcolor', 'black'])]),
+                               
+                dict(x=0.4, y=1.25,
+                buttons=[dict(label='Thin', method='restyle',args=['node.thickness', 8]),
+                        dict(label='Thick',method='restyle',args=['node.thickness', 15])]),
+
+                dict(x=0.6, y=1.25,
                       buttons=[dict(label='Small gap',method='restyle',args=['node.pad', 15]),
                                dict(label='Large gap',method='restyle',args=['node.pad', 20])]),
-                 dict(y=0.2,
+
+                 dict(x=0.8, y=1.25,
                       buttons=[dict(label='Horizontal', method='restyle', args=['orientation', 'h']),
-                               dict(label='Vertical',method='restyle',args=['orientation', 'v'])]),
-                 dict(y=0.4,
-                      buttons=[dict(label='Light', method='relayout', args=['paper_bgcolor', 'white']),
-                               dict(label='Dark', method='relayout', args=['paper_bgcolor', 'black'])])])
+                               dict(label='Vertical',method='restyle',args=['orientation', 'v'])])
+                        ])
         
     def build(self):
         """Build the enrichment Sankey"""
