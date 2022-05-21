@@ -4,7 +4,7 @@
 
 Cell Layers is an interactive Sankey tool for the quantitative investigation of gene expression, coexpression, biological processes, and cluster integrity across clustering resolutions.
 
-![plot](/images/Fig1a.png)
+![plot](/images/example.png)
 
 ## Installation
 The **CellLayers** Python module can be installed via pip. Please note, the Python module requires the cluster metric and enrichment data to be generated independently or via our R library **SetupCellLayers**. 
