@@ -5,18 +5,17 @@
 Cell Layers is an interactive Sankey tool for the quantitative investigation of gene expression, coexpression, biological processes, and cluster integrity across clustering resolutions.
 
 ## Installation
-The **CellLayers** Python module can be installed via pip after cloning the repository. Please note, the Python module requires the cluster metric and enrichment data to be generated independently or via our R library **SetupCellLayers**. 
+The **CellLayers** Python module can be installed via pip. Please note, the Python module requires the cluster metric and enrichment data to be generated independently or via our R library **SetupCellLayers**. 
 
 ```bash
-$ git clone git@github.com:apblair/CellLayers.git
-$ cd CellLayers
-$ pip install .
+$ pip install CellLayers
 ```
 
 The **SetupCellLayers** R library can be installed via devtools after cloning the repository.
 ```R
 > library(devtools)
 > setwd("CellLayers")
+> options(timeout=9999999)
 > devtools::install_github("apblair/CellLayers/SetupCellLayers")
 > library(SetupCellLayers)
 ```

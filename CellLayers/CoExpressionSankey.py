@@ -21,7 +21,8 @@ class CoExpressionSankey:
     """
 
     #TODO: Update hovertemplate; currently hardcoded
-    
+    #TODO: Update gene, cluster evaluation, and go bpa buttons
+
     def __init__(self, sankey_dict):
         self.sankey_dict = sankey_dict
         self._starting_coexpressed_genes = list(sankey_dict['coexp_color'].keys())[0]
@@ -94,7 +95,7 @@ class CoExpressionSankey:
             link=go.sankey.Link(source = self.sankey_dict['data']['source'],
                                 target = self.sankey_dict['data']['target'],
                                 color = [matplotlib.colors.to_hex(x) for x in self.sankey_dict['coexp_color'][self._starting_coexpressed_genes]],
-                                value = self.sankey_dict['data']['value']),), row=1, col=2)
+                                value = self.sankey_dict['data']['value']),textfont=dict(color='black',size=20)), row=1, col=2)
     
     def _create_ternary(self, fig):
         """
@@ -121,10 +122,54 @@ class CoExpressionSankey:
             'aaxis': self._create_axis(self._starting_coexpressed_genes[0], 0),
             'baxis': self._create_axis('<br>'+self._starting_coexpressed_genes[1], 45),
             'caxis': self._create_axis('<br>'+self._starting_coexpressed_genes[2], -45)}})
+    
+
+    def _add_functionality(self, fig):
+        """
+        Add drop down menus for selecting genes and configuring the layout
+
+        Parameters
+        ----------
+        fig: plotly.graph_objs._figure.Figure
+            Plotly Figure subclass from the graph_objects class
+        """
+        gene_buttons = [dict(label='NPPA, TECRL, MYH6', method='update', args=[{"visible":[True]}])] # temporary fix
+        cluster_evaluation_buttons = [dict(label='Silhouette Scores', method='update', args=[{"visible":[True]}])] # temporary fix
+        # biological_activity_buttons = [dict(label='GO BPA 2018', method='update', args=[{"visible":[True]}])] # temporary fix
+
+        fig.update_layout(
+            updatemenus=[
+
+                dict(x=0, y=1.05, buttons=list(gene_buttons),font=dict(size=20)), # temporary fix
+                dict(x=0, y=.9, buttons=list(cluster_evaluation_buttons),font=dict(size=20)), # temporary fix
+                # dict(y=0.5, buttons=list(biological_activity_buttons)), # temporary fix
+
+                dict(x=0, y=1.25,
+                buttons=[dict(label='Snap',method='restyle', args=['arrangement', 'snap']),
+                        dict(label='Perpendicular', method='restyle',args=['arrangement', 'perpendicular']),
+                        dict(label='Freeform', method='restyle',args=['arrangement', 'freeform']),
+                        dict(label='Fixed', method='restyle',args=['arrangement', 'fixed'])], font=dict(size=20)),    
+                
+                dict(x=0.2, y=1.25,
+                buttons=[dict(label='Light', method='relayout', args=['paper_bgcolor', 'white']),
+                        dict(label='Dark', method='relayout', args=['paper_bgcolor', 'black'])], font=dict(size=20)),
+                
+                dict(x=0.4, y=1.25,
+                buttons=[dict(label='Thin', method='restyle',args=['node.thickness', 8]),
+                        dict(label='Thick',method='restyle',args=['node.thickness', 15])], font=dict(size=20)),
+                
+                dict(x=0.6, y=1.25,
+                buttons=[dict(label='Small gap',method='restyle',args=['node.pad', 15]),
+                        dict(label='Large gap',method='restyle',args=['node.pad', 20])], font=dict(size=20)),
+                
+                dict(x=0.8, y=1.25,
+                buttons=[dict(label='Horizontal', method='restyle', args=['orientation', 'h']),
+                        dict(label='Vertical',method='restyle',args=['orientation', 'v'])],font=dict(size=20))])
         
     def build(self):
         """Build the co-expression network"""
         fig = self._create_subplot()
         self._create_sankey(fig)
         self._create_ternary(fig)
+        self._add_functionality(fig)
         return fig

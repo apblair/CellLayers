@@ -37,7 +37,7 @@ class Sankey:
                 link = dict(source = self.sankey_dict['data']['source'],
                             target = self.sankey_dict['data']['target'],
                             color =  self.sankey_dict['data'][self._starter_gene+'_hex'],
-                            value = self.sankey_dict['data']['value']))])
+                            value = self.sankey_dict['data']['value']),textfont=dict(color='black',size=15))])
         fig.update_xaxes(showticklabels=False) 
         fig.update_yaxes(showticklabels=False)
         fig['layout']['showlegend'] = False
@@ -130,32 +130,32 @@ class Sankey:
         gene_buttons = self._create_gene_expression(fig)
         fig.update_layout(
             updatemenus=[
-                dict(y=0.9, buttons=list(gene_buttons)),
+                dict(y=0.9, buttons=list(gene_buttons), font=dict(size=15)),
                 
-#                 dict(y=0.25, buttons=[dict(label='Silhouette Score', 
-#                                            method='update', args=[{"visible":True}])]),
+                dict(y=0.50, buttons=[dict(label='Silhouette Scores', 
+                                           method='update', args=[{"visible":True}])],font=dict(size=15)),
                 
-                dict(x=0, y=1.25,
+                dict(x=0, y=1.30,
                 buttons=[dict(label='Snap',method='restyle', args=['arrangement', 'snap']),
                         dict(label='Perpendicular', method='restyle',args=['arrangement', 'perpendicular']),
                         dict(label='Freeform', method='restyle',args=['arrangement', 'freeform']),
-                        dict(label='Fixed', method='restyle',args=['arrangement', 'fixed'])]),    
+                        dict(label='Fixed', method='restyle',args=['arrangement', 'fixed'])],font=dict(size=15)),    
                 
-                dict(x=0.2, y=1.25,
+                dict(x=0.2, y=1.30,
                 buttons=[dict(label='Light', method='relayout', args=['paper_bgcolor', 'white']),
-                        dict(label='Dark', method='relayout', args=['paper_bgcolor', 'black'])]),
+                        dict(label='Dark', method='relayout', args=['paper_bgcolor', 'black'])],font=dict(size=15)),
                 
-                dict(x=0.4, y=1.25,
+                dict(x=0.4, y=1.30,
                 buttons=[dict(label='Thin', method='restyle',args=['node.thickness', 8]),
-                        dict(label='Thick',method='restyle',args=['node.thickness', 15])]),
+                        dict(label='Thick',method='restyle',args=['node.thickness', 15])],font=dict(size=15)),
                 
-                dict(x=0.6, y=1.25,
+                dict(x=0.6, y=1.30,
                 buttons=[dict(label='Small gap',method='restyle',args=['node.pad', 15]),
-                        dict(label='Large gap',method='restyle',args=['node.pad', 20])]),
+                        dict(label='Large gap',method='restyle',args=['node.pad', 20])],font=dict(size=15)),
                 
-                dict(x=0.8, y=1.25,
+                dict(x=0.8, y=1.30,
                 buttons=[dict(label='Horizontal', method='restyle', args=['orientation', 'h']),
-                        dict(label='Vertical',method='restyle',args=['orientation', 'v'])])])
+                        dict(label='Vertical',method='restyle',args=['orientation', 'v'])],font=dict(size=15))])
                         
         self._create_silhouette_colorbar(fig)
 

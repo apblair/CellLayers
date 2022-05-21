@@ -32,8 +32,17 @@ class EnrichmentSankey:
     def _create_node_labels(self):
         """Create node hovertemplate text"""
         label_list = []
+        # temporary fix
+        go_term = self.starter_geneset.split(' ')[-1].replace('(', '').replace(')','')
+        go_title = self.starter_geneset.split(' ')
+        go_title.pop(-1)
+        go_title = ' '.join(go_title)
         for data in self.sankey_dict['node_data'][['modularity', 'silhoutte_score', self.starter_geneset + '_combined.score', 'top_genes']].values:
-            label = '<br />' + self.starter_geneset + '<br />' + 'Gene Set Score: ' + str(data[2]) + '<br />' + 'Top Genes: ' + str(data[-1])
+            label = 'Modularity Score: ' + str(data[0]) + \
+                '<br />' +'Silhouette Score: ' + str(data[1]) + \
+                '<br />' + go_term + ': ' + go_title + \
+                '<br />' + 'Gene Set Score: ' + str(data[2]) + \
+                '<br />' + 'Top Genes: ' + str(data[-1])
             label_list.append(label)
         self.sankey_dict['node_data']['label'] = label_list
     
@@ -49,7 +58,8 @@ class EnrichmentSankey:
                            link = dict(source = self.sankey_dict['data']['source'],
                                        target = self.sankey_dict['data']['target'],
                                        color = self.sankey_dict['data'][self.starter_gene+'_hex'],
-                                       value = self.sankey_dict['data']['value']))])
+                                       value = self.sankey_dict['data']['value'].tolist()),
+                                       textfont=dict(color='black',size=15))])
     
     def _create_exp_colorbar(self, fig):
         """
@@ -105,27 +115,34 @@ class EnrichmentSankey:
         fig.update_layout(xaxis_zeroline=False, yaxis_zeroline=False)
         fig.update_layout(
             updatemenus=[
-                dict(x=0, y=1.25,
+                
+                dict(y=0.9, buttons=[dict(label='CD3E', 
+                                           method='update', args=[{"visible":True}])],font=dict(size=15)), # temporary fix
+                
+                dict(y=0.5, buttons=[dict(label='GO:0002480', 
+                                           method='update', args=[{"visible":True}])],font=dict(size=15)), # temporary fix
+
+                dict(x=0, y=1.30,
                      buttons=[dict(label='Snap',method='restyle', args=['arrangement', 'snap']),
                               dict(label='Perpendicular', method='restyle',args=['arrangement', 'perpendicular']),
                               dict(label='Freeform', method='restyle',args=['arrangement', 'freeform']),
-                              dict(label='Fixed', method='restyle',args=['arrangement', 'fixed'])]),
+                              dict(label='Fixed', method='restyle',args=['arrangement', 'fixed'])],font=dict(size=15)),
                 
-                dict(x=0.2, y=1.25,
+                dict(x=0.2, y=1.30,
                       buttons=[dict(label='Light', method='relayout', args=['paper_bgcolor', 'white']),
-                               dict(label='Dark', method='relayout', args=['paper_bgcolor', 'black'])]),
+                               dict(label='Dark', method='relayout', args=['paper_bgcolor', 'black'])],font=dict(size=15)),
                                
-                dict(x=0.4, y=1.25,
+                dict(x=0.4, y=1.30,
                 buttons=[dict(label='Thin', method='restyle',args=['node.thickness', 8]),
-                        dict(label='Thick',method='restyle',args=['node.thickness', 15])]),
+                        dict(label='Thick',method='restyle',args=['node.thickness', 15])],font=dict(size=15)),
 
-                dict(x=0.6, y=1.25,
+                dict(x=0.6, y=1.30,
                       buttons=[dict(label='Small gap',method='restyle',args=['node.pad', 15]),
-                               dict(label='Large gap',method='restyle',args=['node.pad', 20])]),
+                               dict(label='Large gap',method='restyle',args=['node.pad', 20])],font=dict(size=15)),
 
-                 dict(x=0.8, y=1.25,
+                 dict(x=0.8, y=1.30,
                       buttons=[dict(label='Horizontal', method='restyle', args=['orientation', 'h']),
-                               dict(label='Vertical',method='restyle',args=['orientation', 'v'])])
+                               dict(label='Vertical',method='restyle',args=['orientation', 'v'])],font=dict(size=15))
                         ])
         
     def build(self):
