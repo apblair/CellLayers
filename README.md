@@ -11,14 +11,20 @@ The **CellLayers** Python module can be installed via pip. Please note, the Pyth
 $ pip install CellLayers
 ```
 
-The **SetupCellLayers** R library can be installed via devtools after cloning the repository.
+The **SetupCellLayers** R library can be installed via devtools.
 ```R
 > library(devtools)
-> setwd("CellLayers")
 > options(timeout=9999999)
 > devtools::install_github("apblair/CellLayers/SetupCellLayers")
 > library(SetupCellLayers)
 ```
+
+Both CellLayers and SetupCellLayers are fully containerized via Docker and Singularity, using the jupyter/datascience-notebook image. 
+```bash
+$ docker pull apblair/cell-layers:v0.2
+$ docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work apblair/cell-layers:v0.2
+```
+
 ## Documentation
 Please consider citing Cell Layers if you used the application or code snippets for your analysis.
     
