@@ -27,3 +27,7 @@ Both CellLayers and SetupCellLayers are fully containerized via Docker and Singu
    
    $ docker pull apblair/cell-layers:v0.2
    $ docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work apblair/cell-layers:v0.2
+
+.. code-block:: console
+   
+   $ singularity pull --arch amd64 library://apblair/single-cell-tools/cell-layers:v0-2

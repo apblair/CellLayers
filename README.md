@@ -32,7 +32,7 @@ $ docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work apblair/cell-l
 ```
 
 ```bash
-$ singularity pull library://apblair/apblair/cell-layers
+$ singularity pull --arch amd64 library://apblair/single-cell-tools/cell-layers:v0-2
 ```
 
 ## Tutorial
