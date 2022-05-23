@@ -25,11 +25,15 @@ The **SetupCellLayers** R library can be installed via devtools.
 > library(SetupCellLayers)
 ```
 
-Both **CellLayers** and **SetupCellLayers** are fully containerized via Docker and Singularity, which are extended from the jupyter/datascience-notebook image.
+Both **CellLayers** and **SetupCellLayers** are fully containerized via Docker and Singularity, which are extended from the jupyter/datascience-notebook image. Please run these commands to start jupyter lab and then navigate to http://localhost:10000:
+
 ```bash
 $ docker pull apblair/cell-layers:v0.2
 $ docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work apblair/cell-layers:v0.2
 ```
+Please note, if you are using an M1 Mac you might need to enable the "Big Sur virtualization.framework" under the "Experimental Features" in your Docker Desktop.
+
+To run the singularity container on a HPC, like UCSF's [Wynton HPC](https://wynton.ucsf.edu/hpc/) please run these commands to start jupyter lab and then navigate to http://localhost:9595:
 
 ```bash
 $ singularity pull --arch amd64 library://apblair/single-cell-tools/cell-layers:v0-2
