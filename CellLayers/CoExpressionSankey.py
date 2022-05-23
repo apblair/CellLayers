@@ -138,7 +138,9 @@ class CoExpressionSankey:
         fig: plotly.graph_objs._figure.Figure
             Plotly Figure subclass from the graph_objects class
         """
-        gene_buttons = [dict(label='NPPA, TECRL, MYH6', method='update', args=[{"visible":[True]}])] # temporary fix
+        gene_buttons = [dict(label=','.join(str(gene) for gene in self._starting_coexpressed_genes), 
+        method='update', 
+        args=[{"visible":[True]}])] # temporary fix
         cluster_evaluation_buttons = [dict(label='Silhouette Scores', method='update', args=[{"visible":[True]}])] # temporary fix
 
         fig.update_layout(
