@@ -11,6 +11,8 @@ data/TBX5/TBX5_exp.csv
 data/TBX5/TBX5_sample_exp.csv
 data/TBX5/TBX5_sample_meta.csv
 data/TBX5/*
+data/TBX5-CMs/*
+data/TBX5-CMs.zip
 data/__MACOSX/*
 data/TBX5/TBX5_exp_*.mtx
 data/TBX5/TBX5_CellLayers.rds
