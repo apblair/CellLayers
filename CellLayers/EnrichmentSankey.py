@@ -37,11 +37,11 @@ class EnrichmentSankey:
         go_title = self.starter_geneset.split(' ')
         go_title.pop(-1)
         go_title = ' '.join(go_title)
-        for data in self.sankey_dict['node_data'][['modularity', 'silhoutte_score', self.starter_geneset + '_combined.score', 'top_genes']].values:
+        for data in self.sankey_dict['node_data'][['modularity', 'silhoutte_norm_by_res', self.starter_geneset + '_combined.score', 'top_genes']].values:
             label = 'Modularity Score: ' + str(data[0]) + \
-                '<br />' +'Silhouette Score: ' + str(data[1]) + \
+                '<br />' +'Normalized Silhouette Score: ' + str(round(data[1],2)) + \
                 '<br />' + go_term + ': ' + go_title + \
-                '<br />' + 'Gene Set Score: ' + str(data[2]) + \
+                '<br />' + 'Gene Set Score: ' + str(round(data[2],2)) + \
                 '<br />' + 'Top Genes: ' + str(data[-1])
             label_list.append(label)
         self.sankey_dict['node_data']['label'] = label_list
@@ -116,7 +116,7 @@ class EnrichmentSankey:
         fig.update_layout(
             updatemenus=[
                 
-                dict(y=0.9, buttons=[dict(label='CD3E', 
+                dict(y=0.9, buttons=[dict(label='CD8A', 
                                            method='update', args=[{"visible":True}])],font=dict(size=15)), # temporary fix
                 
                 dict(y=0.5, buttons=[dict(label='GO:0002480', 

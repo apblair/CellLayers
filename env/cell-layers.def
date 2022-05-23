@@ -1,0 +1,2 @@
+Bootstrap: docker
+From: apblair/cell-layers:v0.2

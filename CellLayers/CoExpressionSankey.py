@@ -42,7 +42,7 @@ class CoExpressionSankey:
             'title': gene,
             'titlefont': { 'size': 20 },
             'tickangle': tickangle,
-            'tickfont': { 'size': 15 },
+            'tickfont': { 'size': 20 },
             'tickcolor': 'rgba(0,0,0,0)',
             'ticklen': 5,
             'showline': True,
@@ -95,7 +95,7 @@ class CoExpressionSankey:
             link=go.sankey.Link(source = self.sankey_dict['data']['source'],
                                 target = self.sankey_dict['data']['target'],
                                 color = [matplotlib.colors.to_hex(x) for x in self.sankey_dict['coexp_color'][self._starting_coexpressed_genes]],
-                                value = self.sankey_dict['data']['value']),textfont=dict(color='black',size=20)), row=1, col=2)
+                                value = self.sankey_dict['data']['value']),textfont=dict(color='black',size=15)), row=1, col=2)
     
     def _create_ternary(self, fig):
         """
@@ -112,9 +112,9 @@ class CoExpressionSankey:
             'b':np.array(self.sankey_dict['coexp_dict'][self._starting_coexpressed_genes])[:,1],
             'c':np.array(self.sankey_dict['coexp_dict'][self._starting_coexpressed_genes])[:,2],
             'text': 'Percentile Expression',
-            'hovertemplate':'MS4A1: %{a} <br> FCER1A: %{b} <br> FCGR3A: %{c}',
+            'hovertemplate':'NPPA: %{a} <br>TECRL: %{b} <br>MYH6: %{c}',
             'marker':{'color':self.sankey_dict['coexp_color'][self._starting_coexpressed_genes],
-                      'size': np.log2(self.sankey_dict['data']['value'].tolist())}}), row=1, col=1)
+                      'size': 2 * np.log2(self.sankey_dict['data']['value'].tolist())}}), row=1, col=1)
         fig.update_layout(height=700, showlegend=False)
         fig.update_layout({
             'ternary':{

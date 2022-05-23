@@ -27,6 +27,10 @@ $ docker pull apblair/cell-layers:v0.2
 $ docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work apblair/cell-layers:v0.2
 ```
 
+```bash
+$ singularity pull library://apblair/apblair/cell-layers
+```
+
 ## Documentation
 Please consider citing Cell Layers if you used the application or code snippets for your analysis.
     
