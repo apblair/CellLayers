@@ -22,6 +22,8 @@ The **SetupCellLayers** R library can be installed via devtools.
    > library(SetupCellLayers)
 
 Both CellLayers and SetupCellLayers are fully containerized via Docker and Singularity, which are extended from the jupyter/datascience-notebook image.
+
 ... code-block:: console
+   
    $ docker pull apblair/cell-layers:v0.2
    $ docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work apblair/cell-layers:v0.2
