@@ -117,7 +117,7 @@ class CoExpressionSankey:
             'b':np.array(self.sankey_dict['coexp_dict'][self._starting_coexpressed_genes])[:,1],
             'c':np.array(self.sankey_dict['coexp_dict'][self._starting_coexpressed_genes])[:,2],
             'text': 'Percentile Expression',
-            'hovertemplate':'NPPA: %{a} <br>TECRL: %{b} <br>MYH6: %{c}',
+            'hovertemplate':self._starting_coexpressed_genes[0]+': %{a} <br>'+self._starting_coexpressed_genes[1]+': %{b} <br>'+self._starting_coexpressed_genes[2]+': %{c}',
             'marker':{'color':self.sankey_dict['coexp_color'][self._starting_coexpressed_genes],
                       'size': 2 * np.log2(self.sankey_dict['data']['value'].tolist())}}), row=1, col=1)
         fig.update_layout(height=700, showlegend=False)
@@ -140,14 +140,12 @@ class CoExpressionSankey:
         """
         gene_buttons = [dict(label='NPPA, TECRL, MYH6', method='update', args=[{"visible":[True]}])] # temporary fix
         cluster_evaluation_buttons = [dict(label='Silhouette Scores', method='update', args=[{"visible":[True]}])] # temporary fix
-        # biological_activity_buttons = [dict(label='GO BPA 2018', method='update', args=[{"visible":[True]}])] # temporary fix
 
         fig.update_layout(
             updatemenus=[
 
                 dict(x=0, y=1.05, buttons=list(gene_buttons),font=dict(size=20)), # temporary fix
                 dict(x=0, y=.9, buttons=list(cluster_evaluation_buttons),font=dict(size=20)), # temporary fix
-                # dict(y=0.5, buttons=list(biological_activity_buttons)), # temporary fix
 
                 dict(x=0, y=1.25,
                 buttons=[dict(label='Snap',method='restyle', args=['arrangement', 'snap']),

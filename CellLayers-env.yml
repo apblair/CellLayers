@@ -189,4 +189,3 @@ dependencies:
   - zstd=1.4.9=h322a384_0
   - pip:
     - celllayers==0.1
-prefix: /Users/andrewblair/opt/miniconda3/envs/CellLayers
