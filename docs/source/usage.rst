@@ -36,4 +36,4 @@ Both CellLayers and SetupCellLayers are fully containerized via Docker and Singu
 .. toctree::
    :maxdepth: 2
 
-   notebooks/PBMC_Tutorial.ipynb
+   notebooks/PBMC_SetupCellLayer.ipynb
