@@ -16,8 +16,3 @@ Contents
 
    usage
    api
-
-.. toctree::
-   :maxdepth: 2
-
-   notebooks/PBMC_Tutorial
