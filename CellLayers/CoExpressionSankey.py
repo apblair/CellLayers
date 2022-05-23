@@ -40,9 +40,9 @@ class CoExpressionSankey:
         """
         return {
             'title': gene,
-            'titlefont': { 'size': 20 },
+            'titlefont': { 'size': 30 },
             'tickangle': tickangle,
-            'tickfont': { 'size': 20 },
+            'tickfont': { 'size': 30 },
             'tickcolor': 'rgba(0,0,0,0)',
             'ticklen': 5,
             'showline': True,
@@ -50,7 +50,10 @@ class CoExpressionSankey:
     
     def _create_subplot(self):
         """Create a subplot for the ternary and sankey plots"""
-        fig = make_subplots(rows=1, cols=2, specs=[[{"type": "ternary"},{"type": "sankey"}]])
+        fig = make_subplots(rows=2, cols=2, specs=[
+            [{"type": "ternary", "rowspan":2},{"type": "sankey","rowspan":2}],
+            [{}, {}]
+            ])
         fig.update_xaxes(showticklabels=False) # hide all the xticks
         fig.update_yaxes(showticklabels=False) # hide all the xticks
         fig['layout']['showlegend'] = False
@@ -77,7 +80,9 @@ class CoExpressionSankey:
                    mode='markers',
                    visible=True,
                    marker={'colorscale':self.sankey_dict['silhouette_colorbar'],
-                           'showscale':True, 'cmin':-1, 'cmax':1, 'colorbar': {'x':1.1}}))
+                           'showscale':True, 'cmin':-1, 'cmax':1, 'colorbar': {'x':1.1, 'tickfont':{'size':10}},
+                           }
+                           ))
     
     def _create_sankey(self, fig):
         """
@@ -95,7 +100,7 @@ class CoExpressionSankey:
             link=go.sankey.Link(source = self.sankey_dict['data']['source'],
                                 target = self.sankey_dict['data']['target'],
                                 color = [matplotlib.colors.to_hex(x) for x in self.sankey_dict['coexp_color'][self._starting_coexpressed_genes]],
-                                value = self.sankey_dict['data']['value']),textfont=dict(color='black',size=15)), row=1, col=2)
+                                value = self.sankey_dict['data']['value']),textfont=dict(color='black',size=20)), row=1, col=2)
     
     def _create_ternary(self, fig):
         """
@@ -119,9 +124,9 @@ class CoExpressionSankey:
         fig.update_layout({
             'ternary':{
             'sum': 100,
-            'aaxis': self._create_axis(self._starting_coexpressed_genes[0], 0),
-            'baxis': self._create_axis('<br>'+self._starting_coexpressed_genes[1], 45),
-            'caxis': self._create_axis('<br>'+self._starting_coexpressed_genes[2], -45)}})
+            'aaxis': self._create_axis('<i>'+self._starting_coexpressed_genes[0]+'</i>', 0),
+            'baxis': self._create_axis('<br>'+'<i>'+self._starting_coexpressed_genes[1]+'</i>', 45),
+            'caxis': self._create_axis('<br>'+'<i>'+self._starting_coexpressed_genes[2]+'</i>', -45)}})
     
 
     def _add_functionality(self, fig):
