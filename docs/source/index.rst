@@ -16,10 +16,9 @@ Contents
 
    usage
    api
-   tutorial
 
 .. toctree::
    :maxdepth: 2
-   :caption: tutorial
+   :caption: Tutorial
 
    tutorial/tutorial.rst
