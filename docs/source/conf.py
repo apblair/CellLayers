@@ -43,3 +43,6 @@ nbsphinx_execute_arguments = [
     "--InlineBackend.figure_formats={'svg', 'pdf'}",
     "--InlineBackend.rc={'figure.dpi': 200}",
 ]
+
+import plotly.io as pio
+pio.renderers.default = 'sphinx_gallery'
