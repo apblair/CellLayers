@@ -32,8 +32,3 @@ Both CellLayers and SetupCellLayers are fully containerized via Docker and Singu
    
    $ singularity pull --arch amd64 library://apblair/single-cell-tools/cell-layers:v0-2
    $ singularity exec cell-layers_v0-2.sif start.sh jupyter lab --port=9595
-
-.. toctree::
-   :maxdepth: 2
-
-   ../../notebooks/PBMC_SetupCellLayer.ipynb
