@@ -15,7 +15,7 @@ For more information, please visit our [Read the Docs](https://celllayers.readth
 The **CellLayers** Python module can be installed via pip. Please note, the Python module requires the cluster metric and enrichment data to be generated independently or via our R library **SetupCellLayers**. 
 
 ```bash
-$ pip install CellLayers
+$ pip install CellLayers==0.2.1
 ```
 
 The **SetupCellLayers** R library can be installed via devtools.

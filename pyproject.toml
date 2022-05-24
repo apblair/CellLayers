@@ -11,7 +11,7 @@ authors = [{name = "Andrew Blair", email = "andrew.blair@ucsf.edu"}]
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
-dependencies = ["matplotlib==3.5.1", "numpy==1.21.2", "pandas==1.4.1", "plotly==5.7.0", "chart-studio==1.1.0", "pandas==1.4.1", "scipy==1.7.3", "nbsphinx", "pytest"]
+dependencies = ["matplotlib==3.5.1", "numpy==1.21.2", "pandas==1.4.1", "plotly==5.7.0", "chart-studio==1.1.0", "scipy==1.7.3", "nbsphinx", "pytest"]
 
 [project.urls]
 Home = "https://github.com/apblair/CellLayers"
