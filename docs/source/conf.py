@@ -11,16 +11,20 @@ version = '0.1.0'
 
 # -- General configuration
 
-extensions = [
-    'sphinx.ext.duration',
-    'sphinx.ext.doctest',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.intersphinx',
+extensions =  ['nbsphinx',
     'sphinx.ext.mathjax',
-    'sphinx.ext.githubpages',
-    'nbsphinx'
-]
+    'sphinx_copybutton',
+    'sphinx.ext.githubpages']
+# extensions = [
+#     'sphinx.ext.duration',
+#     'sphinx.ext.doctest',
+#     'sphinx.ext.autodoc',
+#     'sphinx.ext.autosummary',
+#     'sphinx.ext.intersphinx',
+#     'sphinx.ext.mathjax',
+#     'sphinx.ext.githubpages',
+#     'nbsphinx'
+# ]
 
 exclude_patterns = ['**.ipynb_checkpoints']
 
