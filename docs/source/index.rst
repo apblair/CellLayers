@@ -20,6 +20,6 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: Tools
+   :caption: tutorial
 
    tutorial/tutorial.rst
