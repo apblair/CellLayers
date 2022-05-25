@@ -1,4 +1,6 @@
-/* @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400&display=swap');
 
 ul.simple {
     margin-bottom: 24px;
@@ -48,10 +50,14 @@ ul.simple {
       display: none;
   }
   
-  /* set page content width */
+
+
   .wy-nav-content {
-      max-width: 1500px!important;
-  }
+    padding: 1.618em 3.236em;
+    height: 100%;
+    /* max-width: 800px; */
+    margin: auto;
+}
   
   p {
       margin-bottom: 15px;
@@ -103,4 +109,4 @@ ul.simple {
     /* keep output background white */
    div.output_area .highlight-default .highlight{
       background-color: #ffffff!important;
-   } */
+   }
