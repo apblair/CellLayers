@@ -27,7 +27,7 @@ ul.simple {
   }
   
   div.output_area.docutils.container {
-      max-height: 500px;
+      max-height: 600px;
       overflow: auto;
       margin-top: 0px!important;
       margin-bottom: 0px!important;
@@ -35,11 +35,11 @@ ul.simple {
   }
   
   div.output_area.rendered_html.docutils.container {
-    max-height: 700px;
+    max-height: 800px;
   }
   
   div.nbinput.container {
-      max-height: 700px;
+      max-height: 800px;
       overflow: auto;
       margin-top: 0px!important;
       margin-bottom: 15px!important;
@@ -53,7 +53,7 @@ ul.simple {
   /* set page content width */
   .wy-nav-content {
       max-width: 5000px!important;
-      max-height: 6000px!important;
+      max-height: 7000px!important;
 
   }
 
