@@ -13,6 +13,7 @@ version = '0.1.0'
 
 extensions =  ['nbsphinx',
     'sphinx.ext.mathjax',
+    'sphinx_copybutton',
     'sphinx.ext.githubpages']
 # extensions = [
 #     'sphinx.ext.duration',
