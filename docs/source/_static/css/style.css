@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400&display=swap');
+
+ul.simple {
+    margin-bottom: 24px;
+  }
+  
+  ul.simple  li {
+    list-style: disc;
+    line-height: 24px;
+    margin-left: 24px;
+  }
+  
+  ul.simple  li p {
+    margin-bottom: 0px;
+  }
+  
+  
+  
+  div.section {
+    margin-top: 20px;
+  }
+  
+  div.nboutput.nblast.container {
+    margin-bottom: 0px!important;
+  }
+  
+  div.output_area.docutils.container {
+      max-height: 500px;
+      overflow: auto;
+      margin-top: 0px!important;
+      margin-bottom: 0px!important;
+      color: darkslategray;
+  }
+  
+  div.output_area.rendered_html.docutils.container {
+    max-height: 700px;
+  }
+  
+  div.nbinput.container {
+      max-height: 700px;
+      overflow: auto;
+      margin-top: 0px!important;
+      margin-bottom: 15px!important;
+  }
+  
+  /* do not show netebook cell In/Out prompts */
+  div.prompt {
+      display: none;
+  }
+  
+  /* set page content width */
+  .wy-nav-content {
+      max-width: 900px!important;
+  }
+  
+  p {
+      margin-bottom: 15px;
+  }
+  
+  /* add some padding to the code output area, so that
+     the horizontal scoll bar does not obstruct the content */
+  div.nboutput.container div.output_area div[class*=highlight] > pre {
+      padding-bottom: 15px!important;
+  }
+  
+  
+  /* override table width restrictions */
+  @media screen and (min-width: 300px) {
+  
+      .wy-table-responsive table td {
+         /* !important prevents the common CSS stylesheets from overriding
+            this as on RTD they are loaded after this stylesheet */
+         white-space: normal !important;
+      }
+  
+      .wy-table-responsive {
+         overflow: visible !important;
+      }
+   }
+  
+   /* change fonts and increase their size in input/output areas */
+   .rst-content pre.literal-block,
+   .rst-content div[class^="highlight"] pre,
+   .rst-content .linenodiv pre {
+       font-size: 14px;
+       font-family: 'Roboto Mono', Courier, monospace!important;
+   }
+  
+   /* remove background colors from rst code snippets */
+   div.highlight{
+     background-color: rgb(230, 230, 230);
+   }
+  
+   /* darker input background */
+   /* 2021.12.21 This does not seem to have an effect anymore.
+      Use div.highlight instead */
+   div.input_area,
+   .highlight-default .highlight,
+   .highlight-html .highlight{
+       background-color: rgb(240, 240, 240)!important;
+   }
+  
+    /* keep output background white */
+   div.output_area .highlight-default .highlight{
+      background-color: #ffffff!important;
+   }
