@@ -49,7 +49,7 @@ nbsphinx_execute_arguments = [
     "--InlineBackend.rc={'figure.dpi': 200}",
 ]
 
-html_scaled_image_link = True #False
+# html_scaled_image_link = True #False
 
 import plotly.io as pio
 pio.renderers.default = 'sphinx_gallery'
