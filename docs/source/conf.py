@@ -39,7 +39,10 @@ templates_path = ['_templates']
 # -- Options for HTML output
 
 html_theme = 'sphinx_rtd_theme'
-html_theme_options = {'body_max_width': '70%'}
+html_theme = 'sphinx_rtd_theme'
+html_style = 'css/my_theme.css'
+
+# html_theme_options = {'body_max_width': '70%'}
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
@@ -50,6 +53,8 @@ nbsphinx_execute_arguments = [
 ]
 
 # html_scaled_image_link = True #False
+html_static_path = ['_static']
+
 
 import plotly.io as pio
 pio.renderers.default = 'sphinx_gallery'
