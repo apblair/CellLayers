@@ -2,15 +2,14 @@
 % Please edit documentation in R/compute_enrichment.R
 \name{select_geneset_markers}
 \alias{select_geneset_markers}
-\title{Select geneset markers
-Default is the top 5 genes}
+\title{Select geneset markers}
 \usage{
 select_geneset_markers(markers_list)
 }
-\value{
-
+\arguments{
+\item{markers_list}{A list of type character specifying the differentially expressed genes at each resolution and community}
 }
 \description{
-Select geneset markers
-Default is the top 5 genes
+Create a dataframe of the top differentially expressed genes for communities across all resolution parameters.
+The default is set to return the top 5 genes.
 }

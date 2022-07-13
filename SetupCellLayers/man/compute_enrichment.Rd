@@ -6,9 +6,16 @@
 \usage{
 compute_enrichment(dbs, sobj, res_search, output_path)
 }
-\value{
+\arguments{
+\item{dbs}{A character specifying the GO category}
 
+\item{sobj}{A Seurat object}
+
+\item{res_search}{A vector of type double that specifies the resolution parameters}
+
+\item{output_path}{A character denoting the output path}
 }
 \description{
-Compute enrichment
+Compute an enrichment analysis of each community using their differentially expressed genes
+at each resolution parameter.
 }

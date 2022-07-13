@@ -2,22 +2,20 @@
 % Please edit documentation in R/compute_silhouette_scores.R
 \name{compute_silhouette_scores}
 \alias{compute_silhouette_scores}
-\title{Compute silhouette scores
-Silhouette scores computed using PCA embedding space (default 30 dimensions)}
+\title{Compute silhouette scores}
 \usage{
 compute_silhouette_scores(sobj, res_search, output_path)
 }
 \arguments{
 \item{sobj}{A Seurat object}
 
-\item{res_search}{A sequence of louvain resolution parameters}
+\item{res_search}{A vector of type double that specifies the resolution parameters}
 
-\item{output_path}{Path of the file containing the silhouette scores for each louvain resolution's clusters}
+\item{output_path}{A character denoting the output path}
 }
 \value{
 sil_df
 }
 \description{
-Compute silhouette scores
-Silhouette scores computed using PCA embedding space (default 30 dimensions)
+Compute silhouette scores using the PCA embedding space (default 30 dimensions) for each resolution's communities.
 }

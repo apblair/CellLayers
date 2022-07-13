@@ -6,6 +6,9 @@
 \usage{
 wrangle_silhouette_scores(sil_list)
 }
+\arguments{
+\item{sil_list}{A list of silhouette score summary statistics for each resolution's communities}
+}
 \value{
 sil_df
 }

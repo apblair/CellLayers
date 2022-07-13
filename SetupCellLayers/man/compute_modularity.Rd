@@ -9,13 +9,10 @@ compute_modularity(sobj, res_search, output_path)
 \arguments{
 \item{sobj}{A Seurat object}
 
-\item{res_search}{A sequence of louvain resolution parameters}
+\item{res_search}{A vector of type double that specifies the resolution parameters}
 
-\item{output_path}{Path of the file containing the louvain cluster modularity scores at each resolution}
-}
-\value{
-cl.setup A list containing the Seurat object and modularity dataframe
+\item{output_path}{A character denoting the output path}
 }
 \description{
-Compute modularity
+Compute clustering for all resolution parameters.
 }
