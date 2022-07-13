@@ -1,9 +1,11 @@
 #' Compute modularity
 #'
+#' Compute clustering for all resolution parameters.
+#' 
 #' @param sobj A Seurat object
-#' @param res_search A sequence of louvain resolution parameters
-#' @param output_path Path of the file containing the louvain cluster modularity scores at each resolution
-#' @return cl.setup A list containing the Seurat object and modularity dataframe
+#' @param res_search  A vector of type double that specifies the resolution parameters
+#' @param output_path A character denoting the output path
+#' @return
 #' @export
 compute_modularity <- function(sobj, res_search, output_path){
     modularity_list <- list()

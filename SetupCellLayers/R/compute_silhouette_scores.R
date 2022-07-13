@@ -1,9 +1,10 @@
 #' Compute silhouette scores
-#' Silhouette scores computed using PCA embedding space (default 30 dimensions)
+#' 
+#' Compute silhouette scores using the PCA embedding space (default 30 dimensions) for each resolution's communities.
 #'
 #' @param sobj A Seurat object
-#' @param res_search A sequence of louvain resolution parameters
-#' @param output_path Path of the file containing the silhouette scores for each louvain resolution's clusters                                              
+#' @param res_search A vector of type double that specifies the resolution parameters
+#' @param output_path A character denoting the output path                                           
 #' @return sil_df
 #' @import Seurat
 #' @import cluster
@@ -29,7 +30,7 @@ compute_silhouette_scores <- function(sobj, res_search, output_path){
 
 #' Wrangle silhouette scores
 #'
-#' @param sil_list
+#' @param sil_list A list of silhouette score summary statistics for each resolution's communities
 #' @return sil_df
 #' @import dplyr
 #' @import tidyr
