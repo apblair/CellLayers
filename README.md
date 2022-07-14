@@ -9,8 +9,6 @@ For more information, please visit our [Read the Docs](https://celllayers.readth
 
 ![plot](/images/example.png)
 
-**Keywords**: single cell, clustering, gene expression, visualization, data analysis
-
 ## Installation
 The **CellLayers** Python module can be installed via pip. Please note, the Python module requires the cluster metric and enrichment data to be generated independently or via our R library **SetupCellLayers**. 
 
@@ -50,7 +48,9 @@ Please see the [notebooks](https://github.com/apblair/CellLayers/tree/master/not
 **Cell Layers: Uncovering clustering structure in unsupervised single-cell transcriptomic analysis** Andrew P. Blair, Robert K. Hu, Elie N. Farah, Neil C. Chi, Katherine S. Pollard, Pawel F. Przytycki*, Irfan S. Kathiriya*, Benoit G. Bruneau*
 bioRxiv 2020.11.29.400614; doi: https://doi.org/10.1101/2020.11.29.400614
 
-Please consider citing Cell Layers if you used the application or it's code snippets for your project.
+**Accepted**: Bioinformatics Advances
+
+Please consider citing Cell Layers if you used the application or code snippets for your project.
     
 ## Authors Contributions
 A.P.B. conceived and initiated the project. R.H assisted in analysis. B.G.B., P.F.P, and I.S.K. supervised A.P.B. I.S.K. provided datasets. K.S.P. advised. All authors commented on the manuscript.
@@ -59,5 +59,5 @@ A.P.B. conceived and initiated the project. R.H assisted in analysis. B.G.B., P.
 We thank the Cytoscape and scNetViz developers Alex Pico and Scooter Morris for their input on Plotly, Dan Carlin for his input on multi-resolution analysis, members of the CIRM Heart of Cells group, Gladstone Bioinformatics core, and Bruneau lab for discussions and comments. 
 
 ## Funding
-California Institute for Regenerative Medicine (RB4-05901 to B.G.B), Additional Ventures (to B.G.B and K.S.P), National Institutes of Health (5U01HL157989-02 to B.G.B and K.S.P), UCSF Department of Anesthesia and Perioperative Care (to I.S.K.), and the Younger family fund (to B.G.B).
+This work has been supported by the California Institute of Regenerative Medicine (RB4-05901 to B.G.B), Additional Ventures (to B.G.B and K.S.P), National Institutes of Health (5U01HL157989-02 to B.G.B and K.S.P), UCSF Department of Anesthesia and Perioperative Care (to I.S.K.), and the Younger family fund (to B.G.B).
 

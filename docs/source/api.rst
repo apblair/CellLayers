@@ -1,7 +1,6 @@
 API
-===
+=====
 
-.. autosummary::
-   :toctree: generated
+.. _CellLayers:
 
-   CellLayers
+.. _SetupCellLayers:
