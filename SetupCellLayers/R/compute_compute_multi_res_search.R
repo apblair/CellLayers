@@ -1,4 +1,4 @@
-#' Compute modularity
+#' Compute multi-resolution search
 #'
 #' Compute clustering for all resolution parameters.
 #' 
@@ -7,7 +7,7 @@
 #' @param output_path A character denoting the output path
 #' @return
 #' @export
-compute_modularity <- function(sobj, res_search, output_path){
+compute_multi_res_search <- function(sobj, res_search, output_path){
     modularity_list <- list()
     for (i in seq_along(res_search)) {
         out <- capture.output(sobj <- FindClusters(sobj, resolution=res_search[[i]]), type =  "output")
