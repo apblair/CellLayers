@@ -1,17 +1,16 @@
 #' Compute enrichment
 #'
+#' @description
 #' Compute an enrichment analysis of each community using their differentially expressed genes
-#' at each resolution parameter.
+#' at each resolution parameter. The function exports two csv files: 
+#' 1) enrichment.csv - multi-resolution enrichment pathways
+#' 2) top_genes.csv - top differentially expressed genes for each resolution's communities.
 #'
 #' @param dbs A character specifying the GO category
 #' @param sobj A Seurat object
 #' @param res_search  A vector of type double that specifies the resolution parameters
 #' @param output_path A character denoting the output path
-#' @import enrichR
-#' @import Seurat
-#' @import dplyr
-#' @import tidyr
-#' @return 
+#' @return None
 #' @export 
 compute_enrichment <- function(dbs, sobj, res_search, output_path){
     enrich_list <- list()
@@ -44,15 +43,12 @@ compute_enrichment <- function(dbs, sobj, res_search, output_path){
 
 #' Select geneset markers 
 #' 
+#'  @description
 #' Create a dataframe of the top differentially expressed genes for communities across all resolution parameters.
 #' The default is set to return the top 5 genes.
 #'
 #' @param markers_list A list of type character specifying the differentially expressed genes at each resolution and community 
-#' @import enrichR
-#' @import Seurat
-#' @import dplyr
-#' @import tidyr
-#' @return 
+#' @return top_genes_df A dataframe containing the top differentially expressed genes by resolution and cluster identity
 #' @export
 select_geneset_markers <- function(markers_list){
     # TODO: Add parameter to include more marker genes.

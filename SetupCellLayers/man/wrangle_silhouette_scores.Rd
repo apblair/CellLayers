@@ -10,7 +10,7 @@ wrangle_silhouette_scores(sil_list)
 \item{sil_list}{A list of silhouette score summary statistics for each resolution's communities}
 }
 \value{
-sil_df
+sil_df A dataframe containing the silhouette score summary statistics for each resolution's communities
 }
 \description{
 Wrangle silhouette scores

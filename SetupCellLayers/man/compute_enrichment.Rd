@@ -15,7 +15,14 @@ compute_enrichment(dbs, sobj, res_search, output_path)
 
 \item{output_path}{A character denoting the output path}
 }
+\value{
+None
+}
 \description{
 Compute an enrichment analysis of each community using their differentially expressed genes
-at each resolution parameter.
+at each resolution parameter. The function exports two csv files:
+\enumerate{
+\item enrichment.csv - multi-resolution enrichment pathways
+\item top_genes.csv - top differentially expressed genes for each resolution's communities.
+}
 }

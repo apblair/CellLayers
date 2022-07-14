@@ -14,7 +14,7 @@ compute_silhouette_scores(sobj, res_search, output_path)
 \item{output_path}{A character denoting the output path}
 }
 \value{
-sil_df
+sil_df silhouette score summary statistics for each resolution's communities
 }
 \description{
 Compute silhouette scores using the PCA embedding space (default 30 dimensions) for each resolution's communities.

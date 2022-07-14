@@ -1,12 +1,17 @@
 #' Compute multi-resolution search
 #'
+#' @description
 #' Compute clustering for all resolution parameters.
 #' 
 #' @param sobj A Seurat object
 #' @param res_search  A vector of type double that specifies the resolution parameters
 #' @param output_path A character denoting the output path
-#' @return
-#' @export
+#' @import enrichR
+#' @import Seurat
+#' @import dplyr
+#' @import tidyr
+#' @return cl.setup A list containing the Seurat object and modularity dataframe
+#' @export 
 compute_multi_res_search <- function(sobj, res_search, output_path){
     modularity_list <- list()
     for (i in seq_along(res_search)) {

@@ -9,7 +9,11 @@ select_geneset_markers(markers_list)
 \arguments{
 \item{markers_list}{A list of type character specifying the differentially expressed genes at each resolution and community}
 }
+\value{
+top_genes_df A dataframe containing the top differentially expressed genes by resolution and cluster identity
+}
 \description{
+@description
 Create a dataframe of the top differentially expressed genes for communities across all resolution parameters.
 The default is set to return the top 5 genes.
 }
