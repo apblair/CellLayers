@@ -12,7 +12,7 @@ Function                             Summary
 ===================================  ====================
 compute_multi_res_search             Compute clustering for all user defined resolution parameters.   
 compute_silhouette_scores            Compute silhouette scores using the PCA embedding space for each resolution's communities. 
-compute_enrichment
+compute_enrichment                   Compute an enrichment analysis of each community using their differentially expressed genes for each resolution parameter.
 ===================================  ====================
 
 .. _CellLayers:
