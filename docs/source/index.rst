@@ -14,7 +14,7 @@ Contents
 
 .. toctree::
 
-   usage
+   installation
    api
 
 .. toctree::
