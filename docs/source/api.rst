@@ -22,7 +22,7 @@ CellLayers
 ===================================  ====================
 Function                             Summary
 ===================================  ====================
-build_sankey
-build_enrichment_sankey
-build_coexpression_sankey
+build_sankey                         Build a 
+build_enrichment_sankey              Build a
+build_coexpression_sankey            Build a
 ===================================  ====================
