@@ -1,6 +1,5 @@
-Tutorial
-========
 .. toctree::
    :
    :titlesonly:
-   PBMC_Tutorial   
+
+   PBMC_Tutorial
