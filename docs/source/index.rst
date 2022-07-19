@@ -19,6 +19,6 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: Tutorial
+   :titlesonly:
 
    tutorial/PBMC_Tutorial
