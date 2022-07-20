@@ -9,4 +9,4 @@ RUN R -e "BiocManager::install('limma')"
 RUN Rscript /tmp/install-SetupCellLayers.R
 
 USER $NB_UID
-RUN pip install --user CellLayers==0.2.1
+RUN pip install --user CellLayers==0.2.2
