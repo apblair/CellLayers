@@ -116,7 +116,7 @@ class EnrichmentSankey:
         fig.update_layout(
             updatemenus=[
                 
-                dict(y=0.9, buttons=[dict(label=self.start_gene, 
+                dict(y=0.9, buttons=[dict(label=self.starter_gene, 
                                            method='update', args=[{"visible":True}])],font=dict(size=15)), # temporary fix
                 
                 dict(y=0.5, buttons=[dict(label='GO:0002480', 
