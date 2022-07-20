@@ -22,7 +22,7 @@ CellLayers
 ===================================  ====================
 Function                             Summary
 ===================================  ====================
-build_sankey                         Build a Sankey
-build_enrichment_sankey              Build a
-build_coexpression_sankey            Build a
+build_sankey                         Build a multi-resolution Sankey network with gene expression and cluster evaluation metrics as attributes.
+build_enrichment_sankey              Build a multi-resolution Sankey network with gene expression and pathway activity as attributes.
+build_coexpression_sankey            Build a multi-resolution Sankey network and ternary graph with gene co-expression as attributes.
 ===================================  ====================
