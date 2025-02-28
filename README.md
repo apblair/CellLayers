@@ -1,4 +1,4 @@
-![BuildStatus](https://github.com/apblair/CellLayers/actions/workflows/main.yml/badge.svg?event=push) [![Documentation Status](https://readthedocs.org/projects/celllayers/badge/?version=latest)](https://celllayers.readthedocs.io/en/latest/?badge=latest)
+![BuildStatus](https://github.com/apblair/CellLayers/actions/workflows/main.yml/badge.svg?event=push) 
 
 
 # Cell Layers: Uncovering clustering structure in unsupervised single-cell transcriptomic analysis
